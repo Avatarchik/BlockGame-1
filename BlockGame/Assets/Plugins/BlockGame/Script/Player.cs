@@ -1,0 +1,130 @@
+﻿using UnityEngine;
+using System.Collections;
+
+namespace plugin_BlockGame
+{
+    enum PLAYER_STATE
+    {
+        IDLE = 0,
+        PICKUP_BLOCK,
+        ROTATION_PLANE,
+    }
+
+    public class Player : MonoBehaviour
+    {
+        GameObject pickedBlock = null;
+
+        GameObject goCamera;
+        GameObject goPlane;
+        GameObject goCompleteBlockUI;
+        GameObject goBlockNum1UI;
+        GameObject goBlockNum2UI;
+        GameObject goBlockNum3UI;
+
+        Plane scPlane;
+        Camera scCamera;
+
+        PLAYER_STATE playerState = PLAYER_STATE.IDLE;
+
+        void Start()
+        {
+            goCamera = GameObject.Find("BlockGame Camera");
+            goPlane = GameObject.Find("Plane");
+            goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
+            goBlockNum1UI = GameObject.Find("BlockNum1UI");
+            goBlockNum2UI = GameObject.Find("BlockNum2UI");
+            goBlockNum3UI = GameObject.Find("BlockNum3UI");
+
+            scCamera = goCamera.GetComponent<Camera>();
+            scPlane = goPlane.GetComponent<Plane>();
+        }
+
+        void Update()
+        {
+            switch (playerState) 
+            {
+            case PLAYER_STATE.IDLE:
+
+                //if(Input.GetButtonDown("Fire1"))
+                if (Input.GetMouseButton(0))
+                {
+                    Ray ray = scCamera.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        pickedBlock = BlockManager.Instance().GetBlock(hit.transform.parent.name, Input.mousePosition);
+
+                        if (pickedBlock)
+                            playerState = PLAYER_STATE.PICKUP_BLOCK;
+                    }
+                    else
+                    {
+                        playerState = PLAYER_STATE.ROTATION_PLANE;
+                    }
+                }
+                break;
+
+            case PLAYER_STATE.PICKUP_BLOCK:
+                if (Input.GetMouseButton(0))
+                    UpdateBlockOnMousePoint();
+                else
+                {
+                    CheckAssembleBlock();
+                    pickedBlock = null;
+                    playerState = PLAYER_STATE.IDLE;
+                }
+                break;
+
+            case PLAYER_STATE.ROTATION_PLANE:
+
+                scPlane.UpdateRotate();
+
+                if (Input.GetMouseButtonUp(0))
+                {
+                    scPlane.UpdateSmoothMoving();
+                    playerState = PLAYER_STATE.IDLE;
+                }
+                break;
+
+            }
+
+            TurnUIWithPlane();
+        }
+
+        void UpdateBlockOnMousePoint()
+        {
+            Vector3 mousePos;
+            mousePos.x = Input.mousePosition.x;
+            mousePos.y = Input.mousePosition.y;
+            mousePos.z = 10;
+
+            pickedBlock.transform.position = (scCamera.ScreenToWorldPoint(mousePos));
+        }
+
+        void TurnUIWithPlane()
+        {
+            goCompleteBlockUI.transform.eulerAngles = goPlane.transform.eulerAngles;
+            goBlockNum1UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+            goBlockNum2UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+            goBlockNum3UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+        }
+
+        void CheckAssembleBlock()
+        {
+            pickedBlock.SetActive(false);
+            Ray ray = scCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit) && hit.transform.parent.name == "Ghost" + pickedBlock.name)
+            {
+                if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.parent.name))
+                {
+                    pickedBlock.transform.position = hit.transform.parent.position;
+                    pickedBlock.SetActive(true);
+                    return;
+                }
+            }
+        }
+    }
+
+}
