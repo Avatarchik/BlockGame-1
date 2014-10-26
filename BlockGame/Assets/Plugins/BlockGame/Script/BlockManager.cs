@@ -117,30 +117,46 @@ namespace plugin_BlockGame
 
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(true);
-				tfGhostBlockNum3.gameObject.SetActive(true);
-				tfGhostBlockNum4.gameObject.SetActive(true);
-				tfGhostBlockNum5.gameObject.SetActive(true);
+				tfGhostBlockNum3.gameObject.SetActive(false);
+				tfGhostBlockNum4.gameObject.SetActive(false);
+				tfGhostBlockNum5.gameObject.SetActive(false);
 
 				return true;
 			case "GhostBlockNum2":
 
+				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(false);
+				tfGhostBlockNum3.gameObject.SetActive(true);
+				tfGhostBlockNum4.gameObject.SetActive(false);
+				tfGhostBlockNum5.gameObject.SetActive(false);
 
 				return true;
 			case "GhostBlockNum3":
 
+				tfGhostBlockNum1.gameObject.SetActive(false);
+				tfGhostBlockNum2.gameObject.SetActive(false);
 				tfGhostBlockNum3.gameObject.SetActive(false);
+				tfGhostBlockNum4.gameObject.SetActive(true);
+				tfGhostBlockNum5.gameObject.SetActive(false);
 
 				return true;
 
 			case "GhostBlockNum4":
 				
+				tfGhostBlockNum1.gameObject.SetActive(false);
+				tfGhostBlockNum2.gameObject.SetActive(false);
+				tfGhostBlockNum3.gameObject.SetActive(false);
 				tfGhostBlockNum4.gameObject.SetActive(false);
+				tfGhostBlockNum5.gameObject.SetActive(true);
 				
 				return true;
 
 			case "GhostBlockNum5":
 				
+				tfGhostBlockNum1.gameObject.SetActive(false);
+				tfGhostBlockNum2.gameObject.SetActive(false);
+				tfGhostBlockNum3.gameObject.SetActive(false);
+				tfGhostBlockNum4.gameObject.SetActive(false);
 				tfGhostBlockNum5.gameObject.SetActive(false);
 				
 				return true;
