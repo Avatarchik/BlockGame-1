@@ -40,6 +40,8 @@ namespace plugin_BlockGame
             GameObject pfBlockNum1 = Resources.Load<GameObject>("Prefab/BlockNum1");
             GameObject pfBlockNum2 = Resources.Load<GameObject>("Prefab/BlockNum2");
             GameObject pfBlockNum3 = Resources.Load<GameObject>("Prefab/BlockNum3");
+			GameObject pfBlockNum4 = Resources.Load<GameObject>("Prefab/BlockNum4");
+			GameObject pfBlockNum5 = Resources.Load<GameObject>("Prefab/BlockNum5");
 
             GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
@@ -96,6 +98,18 @@ namespace plugin_BlockGame
             goBlockNum3UI.transform.position = new Vector3(1.5f, 0, -10.5f);
             goBlockNum3UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
             goBlockNum3UI.name = "BlockNum3UI";
+
+			GameObject goBlockNum4UI = (GameObject)GameObject.Instantiate(pfBlockNum4);
+			goBlockNum4UI.transform.parent = root.transform;
+			goBlockNum4UI.transform.position = new Vector3(-2.5f, 0, -14.0f);
+			goBlockNum4UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+			goBlockNum4UI.name = "BlockNum4UI";
+
+			GameObject goBlockNum5UI = (GameObject)GameObject.Instantiate(pfBlockNum5);
+			goBlockNum5UI.transform.parent = root.transform;
+			goBlockNum5UI.transform.position = new Vector3(13.0f, 0, 1.0f);
+			goBlockNum5UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+			goBlockNum5UI.name = "BlockNum5UI";
 
         }
 
