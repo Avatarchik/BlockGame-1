@@ -5,8 +5,7 @@ namespace plugin_BlockGame
 {
     public class BlockManager : MonoBehaviour
     {
-
-        static BlockManager _instance = null;
+		static BlockManager _instance = null;
 
         GameObject goPlane;
         GameObject goBlockNum1;
@@ -20,6 +19,27 @@ namespace plugin_BlockGame
         Transform tfGhostBlockNum3;
 		Transform tfGhostBlockNum4;
 		Transform tfGhostBlockNum5;
+
+		Material disableMat;
+		Material enableMat;
+		GameObject goCompleteBlockUI;
+		GameObject goGhostBlockNum1UI;
+		GameObject goGhostBlockNum2UI;
+		GameObject goGhostBlockNum3UI;
+		GameObject goGhostBlockNum4UI;
+		GameObject goGhostBlockNum5UI;
+
+		enum AssembleState
+		{
+			ASSEM_NONE,
+			ASSEM_1,
+			ASSEM_2,
+			ASSEM_3,
+			ASSEM_4,
+			ASSEM_5
+		}
+
+		AssembleState assem = AssembleState.ASSEM_NONE;
 
         public static BlockManager Instance()
         {
@@ -78,29 +98,78 @@ namespace plugin_BlockGame
 			goBlockNum5.name = "BlockNum5";
 			goBlockNum5.SetActive(false);
 
-        }
+			disableMat = Resources.Load<Material>("Material/Disabled");
+			enableMat = Resources.Load<Material>("Material/GhostMaterial");
 
-        public GameObject GetBlock(string BlockUIName, Vector3 pos)
+			goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
+			goGhostBlockNum1UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum1").gameObject;
+			goGhostBlockNum2UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum2").gameObject;
+			goGhostBlockNum3UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum3").gameObject;
+			goGhostBlockNum4UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum4").gameObject;
+			goGhostBlockNum5UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum5").gameObject;
+
+			foreach( MeshRenderer mr in goGhostBlockNum1UI.GetComponentsInChildren<MeshRenderer>() )
+			{
+				mr.material = enableMat;
+			}
+
+			foreach( MeshRenderer mr in goGhostBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
+			{
+				mr.material = disableMat;
+			}
+
+			foreach( MeshRenderer mr in goGhostBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
+			{
+				mr.material = disableMat;
+			}
+
+			foreach( MeshRenderer mr in goGhostBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
+			{
+				mr.material = disableMat;
+			}
+
+			foreach( MeshRenderer mr in goGhostBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
+			{
+				mr.material = disableMat;
+			}
+		}
+		
+		public GameObject GetBlock(string BlockUIName, Vector3 pos)
         {
             switch (BlockUIName)
             {
 			case "BlockNum1UI":
+				if ( assem >= AssembleState.ASSEM_1 )
+					return null;
+
 				goBlockNum1.transform.position = pos;
 				goBlockNum1.SetActive(true);
 				return goBlockNum1;
 			case "BlockNum2UI":
+				if ( assem >= AssembleState.ASSEM_2 )
+					return null;
+
 				goBlockNum2.transform.position = pos;
 				goBlockNum2.SetActive(true);
 				return goBlockNum2;
 			case "BlockNum3UI":
+				if ( assem >= AssembleState.ASSEM_3 )
+					return null;
+
 				goBlockNum3.transform.position = pos;
 				goBlockNum3.SetActive(true);
 				return goBlockNum3;
 			case "BlockNum4UI":
+				if ( assem >= AssembleState.ASSEM_4 )
+					return null;
+
 				goBlockNum4.transform.position = pos;
 				goBlockNum4.SetActive(true);
 				return goBlockNum4;
 			case "BlockNum5UI":
+				if ( assem >= AssembleState.ASSEM_5 )
+					return null;
+
 				goBlockNum5.transform.position = pos;
 				goBlockNum5.SetActive(true);
 				return goBlockNum5;
@@ -111,18 +180,48 @@ namespace plugin_BlockGame
 
         public bool CheckAssembleBlockLogic(string hitBlockName)
         {
-            switch (hitBlockName)
+			GameObject goBlockNum1UI = GameObject.Find("BlockNum1UI");
+			GameObject goBlockNum2UI = GameObject.Find("BlockNum2UI");
+			GameObject goBlockNum3UI = GameObject.Find("BlockNum3UI");
+			GameObject goBlockNum4UI = GameObject.Find("BlockNum4UI");
+			GameObject goBlockNum5UI = GameObject.Find("BlockNum5UI");
+			
+			switch (hitBlockName)
             {
 			case "GhostBlockNum1":
 
+				// goBlockNum1UI.gameObject.SetActive(false);
+				foreach( MeshRenderer mr in goBlockNum1UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				assem = AssembleState.ASSEM_1;
+				
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(true);
 				tfGhostBlockNum3.gameObject.SetActive(false);
 				tfGhostBlockNum4.gameObject.SetActive(false);
 				tfGhostBlockNum5.gameObject.SetActive(false);
 
+				foreach( MeshRenderer mr in goGhostBlockNum1UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				
+				foreach( MeshRenderer mr in goGhostBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = enableMat;
+				}
+
 				return true;
 			case "GhostBlockNum2":
+
+				// goBlockNum2UI.gameObject.SetActive(false);
+				foreach( MeshRenderer mr in goBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				assem = AssembleState.ASSEM_2;
 
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(false);
@@ -130,8 +229,25 @@ namespace plugin_BlockGame
 				tfGhostBlockNum4.gameObject.SetActive(false);
 				tfGhostBlockNum5.gameObject.SetActive(false);
 
+				foreach( MeshRenderer mr in goGhostBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				
+				foreach( MeshRenderer mr in goGhostBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = enableMat;
+				}
+
 				return true;
 			case "GhostBlockNum3":
+
+				// goBlockNum3UI.gameObject.SetActive(false);
+				foreach( MeshRenderer mr in goBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				assem = AssembleState.ASSEM_3;
 
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(false);
@@ -139,26 +255,65 @@ namespace plugin_BlockGame
 				tfGhostBlockNum4.gameObject.SetActive(true);
 				tfGhostBlockNum5.gameObject.SetActive(false);
 
+				foreach( MeshRenderer mr in goGhostBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				
+				foreach( MeshRenderer mr in goGhostBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = enableMat;
+				}
+
 				return true;
 
 			case "GhostBlockNum4":
-				
+
+				// goBlockNum4UI.gameObject.SetActive(false);
+				foreach( MeshRenderer mr in goBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				assem = AssembleState.ASSEM_4;
+
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(false);
 				tfGhostBlockNum3.gameObject.SetActive(false);
 				tfGhostBlockNum4.gameObject.SetActive(false);
 				tfGhostBlockNum5.gameObject.SetActive(true);
+
+				foreach( MeshRenderer mr in goGhostBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
 				
+				foreach( MeshRenderer mr in goGhostBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = enableMat;
+				}
+
 				return true;
 
 			case "GhostBlockNum5":
-				
+
+				// goBlockNum5UI.gameObject.SetActive(false);
+				foreach( MeshRenderer mr in goBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+				assem = AssembleState.ASSEM_5;
+
 				tfGhostBlockNum1.gameObject.SetActive(false);
 				tfGhostBlockNum2.gameObject.SetActive(false);
 				tfGhostBlockNum3.gameObject.SetActive(false);
 				tfGhostBlockNum4.gameObject.SetActive(false);
 				tfGhostBlockNum5.gameObject.SetActive(false);
-				
+
+				foreach( MeshRenderer mr in goGhostBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.material = disableMat;
+				}
+
 				return true;
 
 			default:

@@ -61,6 +61,8 @@ namespace plugin_BlockGame
 
                         if (pickedBlock)
                             playerState = PLAYER_STATE.PICKUP_BLOCK;
+						else
+							return;
                     }
                     else
                     {
