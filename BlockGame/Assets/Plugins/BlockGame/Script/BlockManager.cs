@@ -22,6 +22,7 @@ namespace plugin_BlockGame
 
 		Material disableMat;
 		Material enableMat;
+		Material assembledMat;
 		GameObject goCompleteBlockUI;
 		GameObject goGhostBlockNum1UI;
 		GameObject goGhostBlockNum2UI;
@@ -100,6 +101,7 @@ namespace plugin_BlockGame
 
 			disableMat = Resources.Load<Material>("Material/Disabled");
 			enableMat = Resources.Load<Material>("Material/GhostMaterial");
+			assembledMat = Resources.Load<Material>("Material/Assembed");
 
 			goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
 			goGhostBlockNum1UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum1").gameObject;
@@ -205,7 +207,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockNum1UI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = assembledMat;
 				}
 				
 				foreach( MeshRenderer mr in goGhostBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
@@ -231,7 +233,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockNum2UI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = assembledMat;
 				}
 				
 				foreach( MeshRenderer mr in goGhostBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
@@ -257,7 +259,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockNum3UI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = assembledMat;
 				}
 				
 				foreach( MeshRenderer mr in goGhostBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
@@ -284,7 +286,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockNum4UI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = assembledMat;
 				}
 				
 				foreach( MeshRenderer mr in goGhostBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
@@ -311,7 +313,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockNum5UI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = assembledMat;
 				}
 
 				return true;
