@@ -1,8 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/BlockGame/Script/BlockManager.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Plugins/BlockGame/Resources/Material/GhostShader.shader">
     <Files>
-      <File FileName="Assets/Plugins/BlockGame/Resources/Material/GhostShader.shader" Line="81" Column="29" />
+      <File FileName="Assets/Plugins/BlockGame/Resources/Material/GhostShader.shader" Line="85" Column="31" />
       <File FileName="Assets/Plugins/BlockGame/Script/BlockManager.cs" Line="299" Column="26" />
     </Files>
   </MonoDevelop.Ide.Workbench>

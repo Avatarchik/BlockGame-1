@@ -57,7 +57,7 @@ namespace plugin_BlockGame
 
                     if (Physics.Raycast(ray, out hit))
                     {
-                        pickedBlock = BlockManager.Instance().GetBlock(hit.transform.parent.name, Input.mousePosition);
+						pickedBlock = BlockManager.Instance().GetBlock(hit.transform.parent.name, Input.mousePosition);
 
                         if (pickedBlock)
                             playerState = PLAYER_STATE.PICKUP_BLOCK;

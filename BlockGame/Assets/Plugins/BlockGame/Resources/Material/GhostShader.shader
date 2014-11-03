@@ -82,9 +82,9 @@
             half4 frag(v2f i) :COLOR
             {
                 half4 c = tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
-				_MainColor.b *= _SinTime.a;
+				c.r *= _SinTime.a;
 				
-				return c + (_MainColor / 5);
+				return c;
             }
                    
             ENDCG

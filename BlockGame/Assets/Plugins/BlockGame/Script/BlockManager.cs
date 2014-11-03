@@ -104,11 +104,11 @@ namespace plugin_BlockGame
 			assembledMat = Resources.Load<Material>("Material/Assembed");
 
 			goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
-			goGhostBlockNum1UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum1").gameObject;
-			goGhostBlockNum2UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum2").gameObject;
-			goGhostBlockNum3UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum3").gameObject;
-			goGhostBlockNum4UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum4").gameObject;
-			goGhostBlockNum5UI = goCompleteBlockUI.transform.FindChild("GhostBlockNum5").gameObject;
+			goGhostBlockNum1UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum1").gameObject;
+			goGhostBlockNum2UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum2").gameObject;
+			goGhostBlockNum3UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum3").gameObject;
+			goGhostBlockNum4UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum4").gameObject;
+			goGhostBlockNum5UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum5").gameObject;
 
 			foreach( MeshRenderer mr in goGhostBlockNum1UI.GetComponentsInChildren<MeshRenderer>() )
 			{
