@@ -17,6 +17,8 @@
             Blend SrcAlpha OneMinusSrcAlpha
            
             CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f members uv_MainTex)
+#pragma exclude_renderers d3d11 xbox360
             #include "UnityCG.cginc"
             #pragma vertex vert
             #pragma fragment frag
@@ -30,6 +32,7 @@
             {
                 float4 pos : POSITION;
                 float4 color : COLOR;
+                float2 uv_MainTex;
             };
            
             v2f vert(appdata_base v)
@@ -45,7 +48,8 @@
            
             half4 frag(v2f i) :COLOR
             {
-                return i.color;
+            	half4 c = tex2D (_MainTex, i.uv_MainTex);
+            	return i.color + c;
             }
                    
             ENDCG
@@ -77,9 +81,10 @@
            
             half4 frag(v2f i) :COLOR
             {
-                //return tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
+                half4 c = tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
 				_MainColor.b *= _SinTime.a;
-				return _MainColor;
+				
+				return c + (_MainColor / 5);
             }
                    
             ENDCG
