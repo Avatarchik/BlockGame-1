@@ -81,36 +81,44 @@ namespace plugin_BlockGame
             goCompleteBlockUI.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             goCompleteBlockUI.name = "CompleteBlockUI";
 
-            GameObject goBlockNum1UI = (GameObject)GameObject.Instantiate(pfBlockNum1);
-            goBlockNum1UI.transform.parent = root.transform;
-            goBlockNum1UI.transform.position = new Vector3(5, 0, -7);
-            goBlockNum1UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-            goBlockNum1UI.name = "BlockNum1UI";
+
+
+			GameObject goSliderUI = new GameObject();
+			goSliderUI.transform.parent = root.transform;
+			goSliderUI.AddComponent<UISlider>();
+			goSliderUI.name = "SliderUI";
+
+			UISlider slider = goSliderUI.transform.GetComponent<UISlider>();
+
+			GameObject goBlockNum1UI = (GameObject)GameObject.Instantiate(pfBlockNum1);
+			goBlockNum1UI.name = "BlockNum1UI";
+			slider.PushObject(goBlockNum1UI);
 
             GameObject goBlockNum2UI = (GameObject)GameObject.Instantiate(pfBlockNum2);
-            goBlockNum2UI.transform.parent = root.transform;
-            goBlockNum2UI.transform.position = new Vector3(9, 0, -3);
-            goBlockNum2UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-            goBlockNum2UI.name = "BlockNum2UI";
+			goBlockNum2UI.name = "BlockNum2UI";
+			slider.PushObject(goBlockNum2UI);
 
             GameObject goBlockNum3UI = (GameObject)GameObject.Instantiate(pfBlockNum3);
-            goBlockNum3UI.transform.parent = root.transform;
-            goBlockNum3UI.transform.position = new Vector3(1.5f, 0, -10.5f);
-            goBlockNum3UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-            goBlockNum3UI.name = "BlockNum3UI";
+			goBlockNum3UI.name = "BlockNum3UI";
+			slider.PushObject(goBlockNum3UI);
 
 			GameObject goBlockNum4UI = (GameObject)GameObject.Instantiate(pfBlockNum4);
-			goBlockNum4UI.transform.parent = root.transform;
-			goBlockNum4UI.transform.position = new Vector3(-2.5f, 0, -14.0f);
-			goBlockNum4UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 			goBlockNum4UI.name = "BlockNum4UI";
+			slider.PushObject(goBlockNum4UI);
 
 			GameObject goBlockNum5UI = (GameObject)GameObject.Instantiate(pfBlockNum5);
-			goBlockNum5UI.transform.parent = root.transform;
-			goBlockNum5UI.transform.position = new Vector3(13.0f, 0, 1.0f);
-			goBlockNum5UI.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 			goBlockNum5UI.name = "BlockNum5UI";
+			slider.PushObject(goBlockNum5UI);
 
+			GameObject goBlockNum6UI = (GameObject)GameObject.Instantiate(pfBlockNum1);
+			goBlockNum6UI.name = "BlockNum6UI";
+			slider.PushObject(goBlockNum6UI);
+
+			GameObject goBlockNum7UI = (GameObject)GameObject.Instantiate(pfBlockNum2);
+			goBlockNum7UI.name = "BlockNum7UI";
+			slider.PushObject(goBlockNum7UI);
+
+			slider.Init();
         }
 
         public virtual void UnInit()

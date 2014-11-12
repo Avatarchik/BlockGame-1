@@ -31,7 +31,7 @@ namespace plugin_BlockGame
         void Start()
         {
             goCamera = GameObject.Find("BlockGame Camera");
-            goPlane = GameObject.Find("Plane");
+			goPlane = GameObject.Find("Plane");
             goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
             goBlockNum1UI = GameObject.Find("BlockNum1UI");
             goBlockNum2UI = GameObject.Find("BlockNum2UI");
