@@ -8,12 +8,14 @@ namespace plugin_BlockGame
         IDLE = 0,
         PICKUP_BLOCK,
         ROTATION_PLANE,
+        SLIDE_UI,
     }
 
     public class Player : MonoBehaviour
     {
         GameObject pickedBlock = null;
 
+        GameObject goUISlider;
         GameObject goCamera;
         GameObject goPlane;
         GameObject goCompleteBlockUI;
@@ -25,13 +27,17 @@ namespace plugin_BlockGame
 
         Plane scPlane;
         Camera scCamera;
+        UISlider scUISlider;
 
         PLAYER_STATE playerState = PLAYER_STATE.IDLE;
+
+        float screenTouchDividePosition;
 
         void Start()
         {
             goCamera = GameObject.Find("BlockGame Camera");
 			goPlane = GameObject.Find("Plane");
+            goUISlider = GameObject.Find("SliderUI");
             goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
             goBlockNum1UI = GameObject.Find("BlockNum1UI");
             goBlockNum2UI = GameObject.Find("BlockNum2UI");
@@ -41,6 +47,9 @@ namespace plugin_BlockGame
 
             scCamera = goCamera.GetComponent<Camera>();
             scPlane = goPlane.GetComponent<Plane>();
+            scUISlider = goUISlider.GetComponent<UISlider>();
+
+            screenTouchDividePosition = Screen.width / 4 * 3;
         }
 
         void Update()
@@ -66,7 +75,10 @@ namespace plugin_BlockGame
                     }
                     else
                     {
-                        playerState = PLAYER_STATE.ROTATION_PLANE;
+                        if (Input.mousePosition.x < screenTouchDividePosition)
+                            playerState = PLAYER_STATE.ROTATION_PLANE;
+                        else
+                            playerState = PLAYER_STATE.SLIDE_UI;
                     }
                 }
                 break;
@@ -93,6 +105,14 @@ namespace plugin_BlockGame
                 }
                 break;
 
+            case PLAYER_STATE.SLIDE_UI:
+
+                scUISlider.UpdateMouseButtonDown();
+
+                if (Input.GetMouseButtonUp(0))
+                    playerState = PLAYER_STATE.IDLE;
+
+                break;
             }
 
             TurnUIWithPlane();

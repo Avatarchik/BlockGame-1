@@ -46,50 +46,50 @@ namespace plugin_BlockGame
 		bool slideFlag = false;
 		Vector3 startScreenPos;
 		
+        public void UpdateMouseButtonDown()
+        {
+            if (!slideFlag)
+            {
+                slideFlag = true;
+                startScreenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            }
+
+            Vector2 nowScreenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+            if (nowScreenPos.y > startScreenPos.y)
+            {
+                Vector3 nowPos = transform.position;
+                nowPos.y += Time.deltaTime * 30.0f;
+                transform.position = nowPos;
+
+                startScreenPos = nowScreenPos;
+
+                if (transform.position.y > 17.0f)
+                {
+                    ++startIndex;
+                    BuildUI();
+                }
+            }
+            else if (nowScreenPos.y < startScreenPos.y)
+            {
+                Vector3 nowPos = transform.position;
+                nowPos.y -= Time.deltaTime * 30.0f;
+                transform.position = nowPos;
+
+                startScreenPos = nowScreenPos;
+
+                if (transform.position.y < 9.7f)
+                {
+                    --startIndex;
+                    startIndex = (listOfUI.Count + startIndex) % listOfUI.Count;
+
+                    BuildUI();
+                }
+            }
+        }
+
 		void Update ()
 		{
-			if (Input.GetMouseButton(0))
-			{
-				if ( !slideFlag )
-				{
-					slideFlag = true;
-					startScreenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-				}
-
-				Vector2 nowScreenPos = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
-				if ( nowScreenPos.y > startScreenPos.y )
-				{
-					Vector3 nowPos = transform.position;
-					nowPos.y += Time.deltaTime * 30.0f;
-					transform.position = nowPos;
-
-					startScreenPos = nowScreenPos;
-
-					if ( transform.position.y > 17.0f )
-					{
-						++startIndex;
-						BuildUI();
-					}
-				}
-				else if ( nowScreenPos.y < startScreenPos.y )
-				{
-					Vector3 nowPos = transform.position;
-					nowPos.y -= Time.deltaTime * 30.0f;
-					transform.position = nowPos;
-					
-					startScreenPos = nowScreenPos;
-
-					if ( transform.position.y < 9.7f )
-					{
-						--startIndex;
-						startIndex = (listOfUI.Count + startIndex) % listOfUI.Count;
-
-						BuildUI();
-					}
-				}
-			}
-
 			if (Input.GetMouseButtonUp(0))
 			{
 				slideFlag = false;
