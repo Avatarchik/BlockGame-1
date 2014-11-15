@@ -7,6 +7,9 @@ namespace plugin_BlockGame
     {
 		static BlockManager _instance = null;
 
+        const string PrefabPath = "Plugins/BlockGame/Prefab/";
+        const string MaterialPath = "Plugins/BlockGame/Material/";
+
         GameObject goPlane;
         GameObject goBlockNum1;
         GameObject goBlockNum2;
@@ -68,11 +71,11 @@ namespace plugin_BlockGame
 			tfGhostBlockNum4.gameObject.SetActive(false);
 			tfGhostBlockNum5.gameObject.SetActive(false);
 
-            GameObject pfBlockNum1 = Resources.Load<GameObject>("Prefab/BlockNum1");
-            GameObject pfBlockNum2 = Resources.Load<GameObject>("Prefab/BlockNum2");
-            GameObject pfBlockNum3 = Resources.Load<GameObject>("Prefab/BlockNum3");
-			GameObject pfBlockNum4 = Resources.Load<GameObject>("Prefab/BlockNum4");
-			GameObject pfBlockNum5 = Resources.Load<GameObject>("Prefab/BlockNum5");
+            GameObject pfBlockNum1 = Resources.Load<GameObject>(PrefabPath + "BlockNum1");
+            GameObject pfBlockNum2 = Resources.Load<GameObject>(PrefabPath + "BlockNum2");
+            GameObject pfBlockNum3 = Resources.Load<GameObject>(PrefabPath + "BlockNum3");
+            GameObject pfBlockNum4 = Resources.Load<GameObject>(PrefabPath + "BlockNum4");
+            GameObject pfBlockNum5 = Resources.Load<GameObject>(PrefabPath + "BlockNum5");
 
             goBlockNum1 = (GameObject)GameObject.Instantiate(pfBlockNum1);
             goBlockNum1.transform.parent = goPlane.transform;
@@ -99,9 +102,9 @@ namespace plugin_BlockGame
 			goBlockNum5.name = "BlockNum5";
 			goBlockNum5.SetActive(false);
 
-			disableMat = Resources.Load<Material>("Material/Disabled");
-			enableMat = Resources.Load<Material>("Material/GhostMaterial");
-			assembledMat = Resources.Load<Material>("Material/Assembed");
+            disableMat = Resources.Load<Material>(MaterialPath + "Disabled");
+            enableMat = Resources.Load<Material>(MaterialPath + "GhostMaterial");
+            assembledMat = Resources.Load<Material>(MaterialPath + "Assembed");
 
 			goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
 			goGhostBlockNum1UI = goCompleteBlockUI.transform.FindChild("CompleteBlockNum1").gameObject;

@@ -10,12 +10,14 @@ namespace plugin_BlockGame
         GameObject goPlugin;
         GameObject root;
 
+        const string PrefabPath = "Plugins/BlockGame/Prefab/";
+
         public virtual void Init(iViewer viewer)
         {
             goPlugin = GameObject.Find("plugin");
             if (goPlugin == null)
             {
-                GameObject pfPlugin = Resources.Load<GameObject>("Prefab/plugin");
+                GameObject pfPlugin = Resources.Load<GameObject>(PrefabPath + "plugin");
                 goPlugin = (GameObject)GameObject.Instantiate(pfPlugin);
                 goPlugin.transform.name = "plugin";
             }
@@ -23,25 +25,25 @@ namespace plugin_BlockGame
             root = GameObject.Find("BlockGame");
             if (root == null)
             {
-                GameObject pfRoot = Resources.Load<GameObject>("Prefab/BlockGame");
+                GameObject pfRoot = Resources.Load<GameObject>(PrefabPath + "BlockGame");
                 root = (GameObject)GameObject.Instantiate(pfRoot);
                 root.transform.parent = goPlugin.transform;
                 root.name = "BlockGame";
             }
 
-            GameObject pfCamera = Resources.Load<GameObject>("Prefab/Camera");
-            GameObject pfLight = Resources.Load<GameObject>("Prefab/Directional light");
-            GameObject pfPlayer = Resources.Load<GameObject>("Prefab/Player");
-            GameObject pfPlane = Resources.Load<GameObject>("Prefab/Plane");
-            GameObject pfBlockManager = Resources.Load<GameObject>("Prefab/BlockManager");
-            GameObject pfCompleteBlock = Resources.Load<GameObject>("Prefab/CompleteBlock");
-            GameObject pfGhostCompleteBlock = Resources.Load<GameObject>("Prefab/GhostCompleteBlock");
+            GameObject pfCamera = Resources.Load<GameObject>(PrefabPath + "Camera");
+            GameObject pfLight = Resources.Load<GameObject>(PrefabPath + "Directional light");
+            GameObject pfPlayer = Resources.Load<GameObject>(PrefabPath + "Player");
+            GameObject pfPlane = Resources.Load<GameObject>(PrefabPath + "Plane");
+            GameObject pfBlockManager = Resources.Load<GameObject>(PrefabPath + "BlockManager");
+            GameObject pfCompleteBlock = Resources.Load<GameObject>(PrefabPath + "CompleteBlock");
+            GameObject pfGhostCompleteBlock = Resources.Load<GameObject>(PrefabPath + "GhostCompleteBlock");
 
-            GameObject pfBlockNum1 = Resources.Load<GameObject>("Prefab/BlockNum1");
-            GameObject pfBlockNum2 = Resources.Load<GameObject>("Prefab/BlockNum2");
-            GameObject pfBlockNum3 = Resources.Load<GameObject>("Prefab/BlockNum3");
-			GameObject pfBlockNum4 = Resources.Load<GameObject>("Prefab/BlockNum4");
-			GameObject pfBlockNum5 = Resources.Load<GameObject>("Prefab/BlockNum5");
+            GameObject pfBlockNum1 = Resources.Load<GameObject>(PrefabPath + "BlockNum1");
+            GameObject pfBlockNum2 = Resources.Load<GameObject>(PrefabPath + "BlockNum2");
+            GameObject pfBlockNum3 = Resources.Load<GameObject>(PrefabPath + "BlockNum3");
+            GameObject pfBlockNum4 = Resources.Load<GameObject>(PrefabPath + "BlockNum4");
+            GameObject pfBlockNum5 = Resources.Load<GameObject>(PrefabPath + "BlockNum5");
 
             GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
