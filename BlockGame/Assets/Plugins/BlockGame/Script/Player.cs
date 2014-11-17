@@ -110,8 +110,10 @@ namespace plugin_BlockGame
                 scUISlider.UpdateMouseButtonDown();
 
                 if (Input.GetMouseButtonUp(0))
+				{
                     playerState = PLAYER_STATE.IDLE;
-
+					scUISlider.UpdateMouseButtonUp();
+				}
                 break;
             }
 

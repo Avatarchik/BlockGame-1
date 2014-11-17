@@ -88,6 +88,11 @@ namespace plugin_BlockGame
             }
         }
 
+		public void UpdateMouseButtonUp()
+		{
+			slideFlag = false;
+		}
+
 		void Update ()
 		{
 			if (Input.GetMouseButtonUp(0))
