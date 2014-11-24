@@ -24,6 +24,8 @@ namespace plugin_BlockGame
         GameObject goBlockNum3UI;
 		GameObject goBlockNum4UI;
 		GameObject goBlockNum5UI;
+		GameObject goBlockNum6UI;
+		GameObject goBlockNum7UI;
 
         Plane scPlane;
         Camera scCamera;
@@ -44,6 +46,8 @@ namespace plugin_BlockGame
             goBlockNum3UI = GameObject.Find("BlockNum3UI");
 			goBlockNum4UI = GameObject.Find("BlockNum4UI");
 			goBlockNum5UI = GameObject.Find("BlockNum5UI");
+			goBlockNum6UI = GameObject.Find("BlockNum6UI");
+			goBlockNum7UI = GameObject.Find("BlockNum7UI");
 
             scCamera = goCamera.GetComponent<Camera>();
             scPlane = goPlane.GetComponent<Plane>();
@@ -138,6 +142,8 @@ namespace plugin_BlockGame
             goBlockNum3UI.transform.eulerAngles = goPlane.transform.eulerAngles;
 			goBlockNum4UI.transform.eulerAngles = goPlane.transform.eulerAngles;
 			goBlockNum5UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+			goBlockNum6UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+			goBlockNum7UI.transform.eulerAngles = goPlane.transform.eulerAngles;
         }
 
         void CheckAssembleBlock()

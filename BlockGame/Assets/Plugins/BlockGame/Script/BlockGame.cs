@@ -44,12 +44,12 @@ namespace plugin_BlockGame
             GameObject pfBlockNum3 = Resources.Load<GameObject>(PrefabPath + "BlockNum3");
             GameObject pfBlockNum4 = Resources.Load<GameObject>(PrefabPath + "BlockNum4");
             GameObject pfBlockNum5 = Resources.Load<GameObject>(PrefabPath + "BlockNum5");
-
-            GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
+			GameObject pfBlockNum6 = Resources.Load<GameObject>(PrefabPath + "BlockNum6");
+			GameObject pfBlockNum7 = Resources.Load<GameObject>(PrefabPath + "BlockNum7");
+			
+			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
             goCamera.name = "BlockGame Camera";
-            //Camera scCamera = goCamera.GetComponent<Camera>();
-            //Camera.SetupCurrent(scCamera);
 
             GameObject goLight = (GameObject)GameObject.Instantiate(pfLight);
             goLight.transform.parent = root.transform;
@@ -72,14 +72,14 @@ namespace plugin_BlockGame
 
             GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
             goCompleteBlock.transform.parent = goPlane.transform;
-            goCompleteBlock.transform.position = new Vector3(0, 0, 0);
+            goCompleteBlock.transform.position = new Vector3(0, 2.5f, 0);
             goCompleteBlock.transform.eulerAngles = new Vector3(0, 0, 0);
             goCompleteBlock.transform.localScale = new Vector3(1, 1, 1);
             goCompleteBlock.name = "CompleteBlock";
 
             GameObject goCompleteBlockUI = (GameObject)GameObject.Instantiate(pfCompleteBlock);
             goCompleteBlockUI.transform.parent = root.transform;
-            goCompleteBlockUI.transform.position = new Vector3(-3, 0, 8);
+            goCompleteBlockUI.transform.position = new Vector3(-3, 2.5f, 8);
             goCompleteBlockUI.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             goCompleteBlockUI.name = "CompleteBlockUI";
 
@@ -112,11 +112,11 @@ namespace plugin_BlockGame
 			goBlockNum5UI.name = "BlockNum5UI";
 			slider.PushObject(goBlockNum5UI);
 
-			GameObject goBlockNum6UI = (GameObject)GameObject.Instantiate(pfBlockNum1);
+			GameObject goBlockNum6UI = (GameObject)GameObject.Instantiate(pfBlockNum6);
 			goBlockNum6UI.name = "BlockNum6UI";
 			slider.PushObject(goBlockNum6UI);
 
-			GameObject goBlockNum7UI = (GameObject)GameObject.Instantiate(pfBlockNum2);
+			GameObject goBlockNum7UI = (GameObject)GameObject.Instantiate(pfBlockNum7);
 			goBlockNum7UI.name = "BlockNum7UI";
 			slider.PushObject(goBlockNum7UI);
 
