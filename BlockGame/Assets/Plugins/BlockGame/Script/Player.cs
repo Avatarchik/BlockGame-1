@@ -67,10 +67,10 @@ namespace plugin_BlockGame
                 {
                     Ray ray = scCamera.ScreenPointToRay(Input.mousePosition);
                     RaycastHit hit;
-
+                    
                     if (Physics.Raycast(ray, out hit))
                     {
-						pickedBlock = BlockManager.Instance().GetBlock(hit.transform.parent.name, Input.mousePosition);
+						pickedBlock = BlockManager.Instance().GetBlock(hit.transform.name, Input.mousePosition);
 
                         if (pickedBlock)
                             playerState = PLAYER_STATE.PICKUP_BLOCK;
@@ -151,11 +151,11 @@ namespace plugin_BlockGame
             pickedBlock.SetActive(false);
             Ray ray = scCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit) && hit.transform.parent.name == "Ghost" + pickedBlock.name)
+            if (Physics.Raycast(ray, out hit) && hit.transform.name == "Ghost" + pickedBlock.name)
             {
-                if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.parent.name))
+                if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.name))
                 {
-                    pickedBlock.transform.position = hit.transform.parent.position;
+                    pickedBlock.transform.position = hit.transform.position;
                     pickedBlock.SetActive(true);
                     return;
                 }

@@ -17,8 +17,8 @@
             Blend SrcAlpha OneMinusSrcAlpha
            
             CGPROGRAM
-// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f members uv_MainTex)
-#pragma exclude_renderers d3d11 xbox360
+			// Upgrade NOTE: excluded shader from DX11 and Xbox360; has structs without semantics (struct v2f members uv_MainTex)
+			#pragma exclude_renderers d3d11 xbox360
             #include "UnityCG.cginc"
             #pragma vertex vert
             #pragma fragment frag
