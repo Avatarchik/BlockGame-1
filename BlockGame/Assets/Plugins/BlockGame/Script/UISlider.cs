@@ -13,7 +13,7 @@ namespace plugin_BlockGame
 
 		public void PushObject(GameObject obj)
 		{
-			obj.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+			obj.transform.localScale = new Vector3(100.0f, 100.0f, 100.0f);
 			listOfUI.Add(obj);
 		}
 
