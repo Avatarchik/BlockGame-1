@@ -11,6 +11,15 @@ namespace plugin_BlockGame
         GameObject goPlugin;
         GameObject root;
 
+		static int blockCount = 0;
+		public static int BlockCount
+		{
+			get
+			{
+				return blockCount;
+			}
+		}
+
         const string PrefabPath = "Plugins/BlockGame/Prefab/";
 
         public virtual void Init(iViewer viewer)
@@ -43,11 +52,14 @@ namespace plugin_BlockGame
 			List<GameObject> goList = new List<GameObject>();
 			for ( int i = 0; i < 7; ++i )
 			{
-				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + "BlockNum" + (i + 1).ToString() );
+				string blockName = "BlockNum" + (i + 1).ToString();
+				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + blockName );
 
 				if ( pfBlock != null )
 					goList.Add (pfBlock);
 			}
+
+			blockCount = goList.Count;
 
 			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace plugin_BlockGame
 {
@@ -19,13 +20,8 @@ namespace plugin_BlockGame
         GameObject goCamera;
         GameObject goPlane;
         GameObject goCompleteBlockUI;
-        GameObject goBlockNum1UI;
-        GameObject goBlockNum2UI;
-        GameObject goBlockNum3UI;
-		GameObject goBlockNum4UI;
-		GameObject goBlockNum5UI;
-		GameObject goBlockNum6UI;
-		GameObject goBlockNum7UI;
+
+		List<GameObject> goUIList = new List<GameObject>();
 
         Plane scPlane;
         Camera scCamera;
@@ -41,13 +37,15 @@ namespace plugin_BlockGame
 			goPlane = GameObject.Find("Plane");
             goUISlider = GameObject.Find("SliderUI");
             goCompleteBlockUI = GameObject.Find("CompleteBlockUI");
-            goBlockNum1UI = GameObject.Find("BlockNum1UI");
-            goBlockNum2UI = GameObject.Find("BlockNum2UI");
-            goBlockNum3UI = GameObject.Find("BlockNum3UI");
-			goBlockNum4UI = GameObject.Find("BlockNum4UI");
-			goBlockNum5UI = GameObject.Find("BlockNum5UI");
-			goBlockNum6UI = GameObject.Find("BlockNum6UI");
-			goBlockNum7UI = GameObject.Find("BlockNum7UI");
+
+			for ( int i = 0; i < BlockGame.BlockCount; ++i )
+			{
+				string blockName = "BlockNum" + (i + 1).ToString() + "UI";
+				GameObject go = GameObject.Find (blockName);
+
+				if ( go != null )
+					goUIList.Add (go);
+			}
 
             scCamera = goCamera.GetComponent<Camera>();
             scPlane = goPlane.GetComponent<Plane>();
@@ -137,13 +135,11 @@ namespace plugin_BlockGame
         void TurnUIWithPlane()
         {
             goCompleteBlockUI.transform.eulerAngles = goPlane.transform.eulerAngles;
-            goBlockNum1UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-            goBlockNum2UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-            goBlockNum3UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-			goBlockNum4UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-			goBlockNum5UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-			goBlockNum6UI.transform.eulerAngles = goPlane.transform.eulerAngles;
-			goBlockNum7UI.transform.eulerAngles = goPlane.transform.eulerAngles;
+
+			foreach(GameObject go in goUIList)
+			{
+				go.transform.eulerAngles = goPlane.transform.eulerAngles;
+			}
         }
 
         void CheckAssembleBlock()
@@ -155,8 +151,7 @@ namespace plugin_BlockGame
             {
                 if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.name))
 				{
-					// pickedBlock.transform.position = hit.transform.position;
-                    pickedBlock.SetActive(false);
+					pickedBlock.SetActive(false);
                     return;
                 }
             }

@@ -40,6 +40,7 @@ namespace plugin_BlockGame
 		Material enableMat;
 		Material assembledMat;
 		GameObject goCompleteBlockUI;
+
 		GameObject goGhostBlockNum1UI;
 		GameObject goGhostBlockNum2UI;
 		GameObject goGhostBlockNum3UI;
