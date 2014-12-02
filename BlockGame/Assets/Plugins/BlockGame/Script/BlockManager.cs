@@ -27,6 +27,15 @@ namespace plugin_BlockGame
 		Transform tfGhostBlockNum6;
 		Transform tfGhostBlockNum7;
 
+		GameObject goDummy;
+		Transform tfDummyNum1;
+		Transform tfDummyNum2;
+		Transform tfDummyNum3;
+		Transform tfDummyNum4;
+		Transform tfDummyNum5;
+		Transform tfDummyNum6;
+		Transform tfDummyNum7;
+
 		Material disableMat;
 		Material enableMat;
 		Material assembledMat;
@@ -173,6 +182,23 @@ namespace plugin_BlockGame
 			{
 				mr.material = disableMat;
 			}
+
+			goDummy = GameObject.Find("CompleteBlockDummy");
+			tfDummyNum1 = goDummy.transform.FindChild("CompleteBlockNum1");
+			tfDummyNum2 = goDummy.transform.FindChild("CompleteBlockNum2");
+			tfDummyNum3 = goDummy.transform.FindChild("CompleteBlockNum3");
+			tfDummyNum4 = goDummy.transform.FindChild("CompleteBlockNum4");
+			tfDummyNum5 = goDummy.transform.FindChild("CompleteBlockNum5");
+			tfDummyNum6 = goDummy.transform.FindChild("CompleteBlockNum6");
+			tfDummyNum7 = goDummy.transform.FindChild("CompleteBlockNum7");
+
+			tfDummyNum1.gameObject.SetActive(false);
+			tfDummyNum2.gameObject.SetActive(false);
+			tfDummyNum3.gameObject.SetActive(false);
+			tfDummyNum4.gameObject.SetActive(false);
+			tfDummyNum5.gameObject.SetActive(false);
+			tfDummyNum6.gameObject.SetActive(false);
+			tfDummyNum7.gameObject.SetActive(false);
 		}
 		
 		public GameObject GetBlock(string BlockUIName, Vector3 pos)
@@ -279,6 +305,8 @@ namespace plugin_BlockGame
 					mr.material = enableMat;
 				}
 
+				tfDummyNum1.gameObject.SetActive(true);
+
 				return true;
 			case "GhostBlockNum2":
 
@@ -307,6 +335,8 @@ namespace plugin_BlockGame
 					mr.material = enableMat;
 				}
 
+				tfDummyNum2.gameObject.SetActive(true);
+
 				return true;
 			case "GhostBlockNum3":
 
@@ -334,6 +364,8 @@ namespace plugin_BlockGame
 				{
 					mr.material = enableMat;
 				}
+
+				tfDummyNum3.gameObject.SetActive(true);
 
 				return true;
 
@@ -364,6 +396,8 @@ namespace plugin_BlockGame
 					mr.material = enableMat;
 				}
 
+				tfDummyNum4.gameObject.SetActive(true);
+
 				return true;
 
 			case "GhostBlockNum5":
@@ -392,7 +426,9 @@ namespace plugin_BlockGame
 				{
 					mr.material = enableMat;
 				}
-				
+
+				tfDummyNum5.gameObject.SetActive(true);
+
 				return true;
 
 			case "GhostBlockNum6":
@@ -421,7 +457,9 @@ namespace plugin_BlockGame
 				{
 					mr.material = enableMat;
 				}
-				
+
+				tfDummyNum6.gameObject.SetActive(true);
+
 				return true;
 
 			case "GhostBlockNum7":
@@ -445,6 +483,8 @@ namespace plugin_BlockGame
 				{
 					mr.material = assembledMat;
 				}
+
+				tfDummyNum7.gameObject.SetActive(true);
 
 				return true;
 

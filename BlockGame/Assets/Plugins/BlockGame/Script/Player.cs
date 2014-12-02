@@ -155,11 +155,8 @@ namespace plugin_BlockGame
             {
                 if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.name))
 				{
-					/// <summary>
-					/// 프리팹 하나 추가해서, 스텝 별로 보여주기
-					/// </summary>
-					pickedBlock.transform.position = hit.transform.position;
-                    pickedBlock.SetActive(true);
+					// pickedBlock.transform.position = hit.transform.position;
+                    pickedBlock.SetActive(false);
                     return;
                 }
             }
