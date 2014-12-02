@@ -72,7 +72,7 @@ namespace plugin_BlockGame
 
             GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
             goCompleteBlock.transform.parent = goPlane.transform;
-            goCompleteBlock.transform.position = new Vector3(0, 2.5f, 0);
+            goCompleteBlock.transform.position = new Vector3(0, 0.5f, 0);
             goCompleteBlock.transform.eulerAngles = new Vector3(0, 0, 0);
             goCompleteBlock.transform.localScale = new Vector3(1, 1, 1);
             goCompleteBlock.name = "CompleteBlock";
