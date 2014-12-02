@@ -11,6 +11,9 @@ namespace plugin_BlockGame
         GameObject goPlugin;
         GameObject root;
 
+		/// <summary>
+		/// Total block count
+		/// </summary>
 		static int blockCount = 0;
 		public static int BlockCount
 		{
@@ -50,16 +53,18 @@ namespace plugin_BlockGame
             GameObject pfGhostCompleteBlock = Resources.Load<GameObject>(PrefabPath + "GhostCompleteBlock");
 
 			List<GameObject> goList = new List<GameObject>();
-			for ( int i = 0; i < 7; ++i )
+
+			blockCount = 0;
+			while(true)
 			{
-				string blockName = "BlockNum" + (i + 1).ToString();
+				string blockName = "BlockNum" + (blockCount++ + 1).ToString();
 				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + blockName );
 
 				if ( pfBlock != null )
 					goList.Add (pfBlock);
+				else
+					break;
 			}
-
-			blockCount = goList.Count;
 
 			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
