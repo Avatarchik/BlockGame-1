@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using civ;
 
@@ -39,14 +40,15 @@ namespace plugin_BlockGame
             GameObject pfCompleteBlock = Resources.Load<GameObject>(PrefabPath + "CompleteBlock");
             GameObject pfGhostCompleteBlock = Resources.Load<GameObject>(PrefabPath + "GhostCompleteBlock");
 
-            GameObject pfBlockNum1 = Resources.Load<GameObject>(PrefabPath + "BlockNum1");
-            GameObject pfBlockNum2 = Resources.Load<GameObject>(PrefabPath + "BlockNum2");
-            GameObject pfBlockNum3 = Resources.Load<GameObject>(PrefabPath + "BlockNum3");
-            GameObject pfBlockNum4 = Resources.Load<GameObject>(PrefabPath + "BlockNum4");
-            GameObject pfBlockNum5 = Resources.Load<GameObject>(PrefabPath + "BlockNum5");
-			GameObject pfBlockNum6 = Resources.Load<GameObject>(PrefabPath + "BlockNum6");
-			GameObject pfBlockNum7 = Resources.Load<GameObject>(PrefabPath + "BlockNum7");
-			
+			List<GameObject> goList = new List<GameObject>();
+			for ( int i = 0; i < 7; ++i )
+			{
+				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + "BlockNum" + (i + 1).ToString() );
+
+				if ( pfBlock != null )
+					goList.Add (pfBlock);
+			}
+
 			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
             goCamera.name = "BlockGame Camera";
@@ -98,33 +100,13 @@ namespace plugin_BlockGame
 
 			UISlider slider = goSliderUI.transform.GetComponent<UISlider>();
 
-			GameObject goBlockNum1UI = (GameObject)GameObject.Instantiate(pfBlockNum1);
-			goBlockNum1UI.name = "BlockNum1UI";
-			slider.PushObject(goBlockNum1UI);
+			for ( int i = 0; i < goList.Count; ++i )
+			{
+				GameObject goBlockUI = (GameObject)GameObject.Instantiate(goList[i]);
 
-            GameObject goBlockNum2UI = (GameObject)GameObject.Instantiate(pfBlockNum2);
-			goBlockNum2UI.name = "BlockNum2UI";
-			slider.PushObject(goBlockNum2UI);
-
-            GameObject goBlockNum3UI = (GameObject)GameObject.Instantiate(pfBlockNum3);
-			goBlockNum3UI.name = "BlockNum3UI";
-			slider.PushObject(goBlockNum3UI);
-
-			GameObject goBlockNum4UI = (GameObject)GameObject.Instantiate(pfBlockNum4);
-			goBlockNum4UI.name = "BlockNum4UI";
-			slider.PushObject(goBlockNum4UI);
-
-			GameObject goBlockNum5UI = (GameObject)GameObject.Instantiate(pfBlockNum5);
-			goBlockNum5UI.name = "BlockNum5UI";
-			slider.PushObject(goBlockNum5UI);
-
-			GameObject goBlockNum6UI = (GameObject)GameObject.Instantiate(pfBlockNum6);
-			goBlockNum6UI.name = "BlockNum6UI";
-			slider.PushObject(goBlockNum6UI);
-
-			GameObject goBlockNum7UI = (GameObject)GameObject.Instantiate(pfBlockNum7);
-			goBlockNum7UI.name = "BlockNum7UI";
-			slider.PushObject(goBlockNum7UI);
+				goBlockUI.name = "BlockNum" + (i + 1).ToString() + "UI";
+				slider.PushObject(goBlockUI);
+			}
 
 			slider.Init();
         }
