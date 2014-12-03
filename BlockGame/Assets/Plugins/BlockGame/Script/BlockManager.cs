@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace plugin_BlockGame
 {
@@ -11,14 +12,10 @@ namespace plugin_BlockGame
         const string MaterialPath = "Plugins/BlockGame/Material/";
 
         GameObject goPlane;
-        GameObject goBlockNum1;
-        GameObject goBlockNum2;
-        GameObject goBlockNum3;
-		GameObject goBlockNum4;
-		GameObject goBlockNum5;
-		GameObject goBlockNum6;
-		GameObject goBlockNum7;
-        GameObject goCompleteBlock;
+
+		List<GameObject> goBlockList = new List<GameObject>();
+
+		GameObject goCompleteBlock;
         Transform tfGhostBlockNum1;
         Transform tfGhostBlockNum2;
         Transform tfGhostBlockNum3;
@@ -93,48 +90,21 @@ namespace plugin_BlockGame
 			tfGhostBlockNum6.gameObject.SetActive(false);
 			tfGhostBlockNum7.gameObject.SetActive(false);
 
-            GameObject pfBlockNum1 = Resources.Load<GameObject>(PrefabPath + "BlockNum1");
-            GameObject pfBlockNum2 = Resources.Load<GameObject>(PrefabPath + "BlockNum2");
-            GameObject pfBlockNum3 = Resources.Load<GameObject>(PrefabPath + "BlockNum3");
-            GameObject pfBlockNum4 = Resources.Load<GameObject>(PrefabPath + "BlockNum4");
-            GameObject pfBlockNum5 = Resources.Load<GameObject>(PrefabPath + "BlockNum5");
-			GameObject pfBlockNum6 = Resources.Load<GameObject>(PrefabPath + "BlockNum6");
-			GameObject pfBlockNum7 = Resources.Load<GameObject>(PrefabPath + "BlockNum7");
-			
-			goBlockNum1 = (GameObject)GameObject.Instantiate(pfBlockNum1);
-            goBlockNum1.transform.parent = goPlane.transform;
-            goBlockNum1.name = "BlockNum1";
-            goBlockNum1.SetActive(false);
+			for ( int i = 0; i < BlockGame.BlockCount; ++i )
+			{
+				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + "BlockNum" + (i + 1).ToString());
 
-            goBlockNum2 = (GameObject)GameObject.Instantiate(pfBlockNum2);
-            goBlockNum2.transform.parent = goPlane.transform;
-            goBlockNum2.name = "BlockNum2";
-            goBlockNum2.SetActive(false);
+				if ( pfBlock != null )
+				{
+					GameObject goBlock = (GameObject)GameObject.Instantiate(pfBlock);
 
-            goBlockNum3 = (GameObject)GameObject.Instantiate(pfBlockNum3);
-            goBlockNum3.transform.parent = goPlane.transform;
-            goBlockNum3.name = "BlockNum3";
-            goBlockNum3.SetActive(false);
+					goBlock.transform.parent = goPlane.transform;
+					goBlock.name = "BlockNum" + (i + 1).ToString();
+					goBlock.SetActive(false);
 
-			goBlockNum4 = (GameObject)GameObject.Instantiate(pfBlockNum4);
-			goBlockNum4.transform.parent = goPlane.transform;
-			goBlockNum4.name = "BlockNum4";
-			goBlockNum4.SetActive(false);
-
-			goBlockNum5 = (GameObject)GameObject.Instantiate(pfBlockNum5);
-			goBlockNum5.transform.parent = goPlane.transform;
-			goBlockNum5.name = "BlockNum5";
-			goBlockNum5.SetActive(false);
-
-			goBlockNum6 = (GameObject)GameObject.Instantiate(pfBlockNum6);
-			goBlockNum6.transform.parent = goPlane.transform;
-			goBlockNum6.name = "BlockNum6";
-			goBlockNum6.SetActive(false);
-
-			goBlockNum7 = (GameObject)GameObject.Instantiate(pfBlockNum7);
-			goBlockNum7.transform.parent = goPlane.transform;
-			goBlockNum7.name = "BlockNum7";
-			goBlockNum7.SetActive(false);
+					goBlockList.Add (goBlock);
+				}
+			}
 
             disableMat = Resources.Load<Material>(MaterialPath + "Disabled");
             enableMat = Resources.Load<Material>(MaterialPath + "GhostMaterial");
@@ -210,57 +180,64 @@ namespace plugin_BlockGame
 				if ( assem >= AssembleState.ASSEM_1 )
 					return null;
 
-				goBlockNum1.transform.position = pos;
-				goBlockNum1.SetActive(true);
-				return goBlockNum1;
+				goBlockList[0].transform.position = pos;
+				goBlockList[0].SetActive(true);
+
+				return goBlockList[0];
 
 			case "BlockNum2UI":
 				if ( assem >= AssembleState.ASSEM_2 )
 					return null;
 
-				goBlockNum2.transform.position = pos;
-				goBlockNum2.SetActive(true);
-				return goBlockNum2;
+				goBlockList[1].transform.position = pos;
+				goBlockList[1].SetActive(true);
+				
+				return goBlockList[1];
 
 			case "BlockNum3UI":
 				if ( assem >= AssembleState.ASSEM_3 )
 					return null;
 
-				goBlockNum3.transform.position = pos;
-				goBlockNum3.SetActive(true);
-				return goBlockNum3;
+				goBlockList[2].transform.position = pos;
+				goBlockList[2].SetActive(true);
+				
+				return goBlockList[2];
 
 			case "BlockNum4UI":
 				if ( assem >= AssembleState.ASSEM_4 )
 					return null;
 
-				goBlockNum4.transform.position = pos;
-				goBlockNum4.SetActive(true);
-				return goBlockNum4;
+				goBlockList[3].transform.position = pos;
+				goBlockList[3].SetActive(true);
+				
+				return goBlockList[3];
 
 			case "BlockNum5UI":
 				if ( assem >= AssembleState.ASSEM_5 )
 					return null;
 
-				goBlockNum5.transform.position = pos;
-				goBlockNum5.SetActive(true);
-				return goBlockNum5;
+				goBlockList[4].transform.position = pos;
+				goBlockList[4].SetActive(true);
+				
+				return goBlockList[4];
 
 			case "BlockNum6UI":
 				if ( assem >= AssembleState.ASSEM_6 )
 					return null;
 				
-				goBlockNum6.transform.position = pos;
-				goBlockNum6.SetActive(true);
-				return goBlockNum6;
+				goBlockList[5].transform.position = pos;
+				goBlockList[5].SetActive(true);
+				
+				return goBlockList[5];
 
 			case "BlockNum7UI":
 				if ( assem >= AssembleState.ASSEM_7 )
 					return null;
 				
-				goBlockNum7.transform.position = pos;
-				goBlockNum7.SetActive(true);
-				return goBlockNum7;
+				goBlockList[6].transform.position = pos;
+				goBlockList[6].SetActive(true);
+				
+				return goBlockList[6];
 
 			default:
 				return null;
