@@ -57,13 +57,15 @@ namespace plugin_BlockGame
 			blockCount = 0;
 			while(true)
 			{
-				string blockName = "BlockNum" + (blockCount++ + 1).ToString();
+				string blockName = "BlockNum" + (blockCount + 1).ToString();
 				GameObject pfBlock = Resources.Load<GameObject>(PrefabPath + blockName );
 
 				if ( pfBlock != null )
 					goList.Add (pfBlock);
 				else
 					break;
+
+				++blockCount;
 			}
 
 			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
