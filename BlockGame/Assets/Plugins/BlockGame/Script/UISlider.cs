@@ -29,8 +29,7 @@ namespace plugin_BlockGame
 
 		public void BuildUI()
 		{
-			transform.localPosition = new Vector3(4.0f, 14.0f, -8.0f);
-
+			transform.localPosition = new Vector3(5.0f, 12.5f, -8.0f);
 			// 0 1 2 3 4 5 6 <- input
 			// 6 0 1 2 3 4 5 <- display
 			for ( int i = 0; i < 7; ++i )
@@ -102,13 +101,13 @@ namespace plugin_BlockGame
 
 			if ( !slideFlag )
 			{
-				if ( transform.position.y > 14.2f )
+				if ( transform.position.y > 12.7f )
 				{
 					Vector3 nowPos = transform.position;
 					nowPos.y -= Time.deltaTime * 30.0f;
 					transform.position = nowPos;
 				}
-				else if (transform.position.y < 13.8f )
+				else if (transform.position.y < 12.3f )
 				{
 					Vector3 nowPos = transform.position;
 					nowPos.y += Time.deltaTime * 30.0f;
@@ -116,7 +115,8 @@ namespace plugin_BlockGame
 				}
 				else
 				{
-					transform.localPosition = new Vector3(4.0f, 14.0f, -8.0f);
+					transform.localPosition = new Vector3(5.0f, 12.5f, -8.0f);
+
 				}
 			}
 		}

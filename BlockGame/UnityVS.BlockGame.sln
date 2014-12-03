@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.BlockGame.CSharp.Pl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.BlockGame.CSharp.Editor", "UnityVS.BlockGame.CSharp.Editor.csproj", "{DA657785-2146-629B-7036-1299145218E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityVS.BlockGame.CSharp", "UnityVS.BlockGame.CSharp.csproj", "{D7AF0C18-20A8-06DB-CB63-CDBAE9EFA873}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{DA657785-2146-629B-7036-1299145218E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA657785-2146-629B-7036-1299145218E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA657785-2146-629B-7036-1299145218E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7AF0C18-20A8-06DB-CB63-CDBAE9EFA873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7AF0C18-20A8-06DB-CB63-CDBAE9EFA873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7AF0C18-20A8-06DB-CB63-CDBAE9EFA873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7AF0C18-20A8-06DB-CB63-CDBAE9EFA873}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
