@@ -69,6 +69,7 @@
      <None Include="Assets\Plugins\BlockGame\iTweenEditor\README.txt" />
      <None Include="Assets\Plugins\BlockGame\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Material\GhostShader.shader" />
+     <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Prefab\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
