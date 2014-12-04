@@ -4,7 +4,7 @@
         _OutlineColor ("Outline Color", Color) = (0,0,0,1)
         _Outline ("Outline width", Range (0, 0.1)) = .005
 		_MainColor ("Main Color", Color) = (0,0,0,1)
-        _MainTex ("Base (RGB)", 2D) = "white" { }
+        _MainTex ("Texture", 2D) = "white" { }
     }
  
     SubShader {
@@ -49,7 +49,7 @@
             half4 frag(v2f i) :COLOR
             {
             	half4 c = tex2D (_MainTex, i.uv_MainTex);
-            	return i.color + c;
+            	return i.color;
             }
                    
             ENDCG
@@ -82,9 +82,12 @@
             half4 frag(v2f i) :COLOR
             {
                 half4 c = tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
-				c.r *= _SinTime.a;
-				
-				return c;
+                
+                c.r *= 0.9f;
+                c.g *= ( 0.5f + _SinTime.a * 0.3f );
+                c.b *= ( 0.3f + _SinTime.a * 0.3f );
+                
+                return c;
             }
                    
             ENDCG

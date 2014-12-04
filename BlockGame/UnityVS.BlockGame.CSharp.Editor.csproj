@@ -69,6 +69,7 @@
     <None Include="Assets\Plugins\BlockGame\iTweenEditor\README.txt" />
     <None Include="Assets\Plugins\BlockGame\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Material\GhostShader.shader" />
+    <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Material\ZWriteShader.shader" />
     <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Prefab\ReadMe.txt" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Bridge.dll" />
     <None Include="Assets\UnityVS\Editor\SyntaxTree.VisualStudio.Unity.Messaging.dll" />
