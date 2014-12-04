@@ -28,7 +28,6 @@ namespace plugin_BlockGame
 		List<Transform> tfDummyList = new List<Transform>();
 
 		Material disableMat;
-		Material disableMatSide;
 		Material enableMat;
 		Material assembledMat;
 
@@ -60,7 +59,6 @@ namespace plugin_BlockGame
 			goDummy = GameObject.Find("CompleteBlockDummy");
 
 			disableMat = Resources.Load<Material>(MaterialPath + "Disabled");
-			disableMatSide = Resources.Load<Material>(MaterialPath + "DisabledSide");
 			enableMat = Resources.Load<Material>(MaterialPath + "GhostMaterial");
 			assembledMat = Resources.Load<Material>(MaterialPath + "Assembed");
 			
@@ -154,7 +152,7 @@ namespace plugin_BlockGame
 					// UI 비활성화 된 것처럼 투명하게 바꾸고
 					foreach( MeshRenderer mr in goBlockUIList[i].GetComponentsInChildren<MeshRenderer>() )
 					{
-						mr.material = disableMatSide;
+						mr.material = disableMat;
 					}
 
 					// 다음 스텝 지시를 일단 모두 false
