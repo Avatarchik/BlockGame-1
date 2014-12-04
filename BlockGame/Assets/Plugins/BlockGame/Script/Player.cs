@@ -59,7 +59,7 @@ namespace plugin_BlockGame
             switch (playerState) 
             {
             case PLAYER_STATE.IDLE:
-
+				UIManager.GetInstance().ChangeState(ControlState.CONTROL_1);
                 //if(Input.GetButtonDown("Fire1"))
                 if (Input.GetMouseButton(0))
                 {
@@ -71,9 +71,13 @@ namespace plugin_BlockGame
 						pickedBlock = BlockManager.Instance().GetBlock(hit.transform.name, Input.mousePosition);
 
                         if (pickedBlock)
+						{
                             playerState = PLAYER_STATE.PICKUP_BLOCK;
+						}
 						else
+						{
 							return;
+						}
                     }
                     else
                     {
@@ -86,14 +90,25 @@ namespace plugin_BlockGame
                 break;
 
             case PLAYER_STATE.PICKUP_BLOCK:
+				UIManager.GetInstance().ChangeState(ControlState.CONTROL_2);
+
+				if( CheckAssembleBlockTest() )
+				{
+					UIManager.GetInstance().ChangeState(ControlState.CONTROL_3);
+                }
+
                 if (Input.GetMouseButton(0))
+				{
                     UpdateBlockOnMousePoint();
+                }
                 else
                 {
                     CheckAssembleBlock();
                     pickedBlock = null;
                     playerState = PLAYER_STATE.IDLE;
                 }
+
+
                 break;
 
             case PLAYER_STATE.ROTATION_PLANE:
@@ -151,11 +166,29 @@ namespace plugin_BlockGame
             {
                 if(BlockManager.Instance().CheckAssembleBlockLogic(hit.transform.name))
 				{
+
 					pickedBlock.SetActive(false);
                     return;
                 }
             }
         }
-    }
 
+		// for ui Test
+		bool CheckAssembleBlockTest()
+		{
+			pickedBlock.SetActive(false);
+			Ray ray = scCamera.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+
+			if (Physics.Raycast(ray, out hit) && hit.transform.name == "Ghost" + pickedBlock.name)
+			{
+				pickedBlock.SetActive(true);
+				return true;
+            }
+
+			pickedBlock.SetActive(true);
+			return false;
+        }
+    }
+    
 }

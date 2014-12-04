@@ -39,10 +39,12 @@ public class TestMain : MonoBehaviour {
 
 		if (bPlayModule)
 		{
+			/*
 			if (GUI.Button(new Rect(3*w/4,0,w/4,w/16), "Return"))
 			{
 				ReturnToViewer();
 			}
+			*/
 		}
 	}
 

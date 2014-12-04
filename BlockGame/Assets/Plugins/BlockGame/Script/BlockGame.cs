@@ -82,7 +82,7 @@ namespace plugin_BlockGame
 
             GameObject goPlane = (GameObject)GameObject.Instantiate(pfPlane);
             goPlane.transform.parent = root.transform;
-            goPlane.transform.position = new Vector3(0, 0, 0);
+			goPlane.transform.position = new Vector3(-3.75f, 0, 0);
             goPlane.transform.eulerAngles = new Vector3(0, 0, 0);
             goPlane.transform.localScale = new Vector3(1, 1, 1);
             goPlane.name = "Plane";
@@ -93,20 +93,20 @@ namespace plugin_BlockGame
 
             GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
             goCompleteBlock.transform.parent = goPlane.transform;
-            goCompleteBlock.transform.position = new Vector3(0, 0.1f, 0);
+			goCompleteBlock.transform.position = new Vector3(-3.75f, 0.1f, 0);
             goCompleteBlock.transform.eulerAngles = new Vector3(0, 0, 0);
             goCompleteBlock.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             goCompleteBlock.name = "CompleteBlock";
 
             GameObject goCompleteBlockUI = (GameObject)GameObject.Instantiate(pfCompleteBlock);
             goCompleteBlockUI.transform.parent = root.transform;
-            goCompleteBlockUI.transform.position = new Vector3(-3, 2.5f, 8);
+			goCompleteBlockUI.transform.position = new Vector3(-4.3f, 3.85f, 8);
             goCompleteBlockUI.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
             goCompleteBlockUI.name = "CompleteBlockUI";
 
 			GameObject goCompleteBlockDummy = (GameObject)GameObject.Instantiate(pfCompleteBlock);
 			goCompleteBlockDummy.transform.parent = goPlane.transform;
-			goCompleteBlockDummy.transform.position = new Vector3(0, 0.1f, 0);
+			goCompleteBlockDummy.transform.position = new Vector3(-3.75f, 0.1f, 0);
 			goCompleteBlockDummy.transform.eulerAngles = new Vector3(0, 0, 0);
 			goCompleteBlock.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
 			goCompleteBlockDummy.name = "CompleteBlockDummy";

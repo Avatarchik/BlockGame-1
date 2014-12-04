@@ -54,6 +54,7 @@
      <Compile Include="Assets\Plugins\BlockGame\Script\BlockManager.cs" />
      <Compile Include="Assets\Plugins\BlockGame\Script\Plane.cs" />
      <Compile Include="Assets\Plugins\BlockGame\Script\Player.cs" />
+     <Compile Include="Assets\Plugins\BlockGame\Script\UIManager.cs" />
      <Compile Include="Assets\Plugins\BlockGame\Script\UISlider.cs" />
      <Compile Include="Assets\Plugins\BlockGame\iTweenEditor\Editor\iTweenEventDataEditor.cs" />
      <Compile Include="Assets\Plugins\BlockGame\iTweenEditor\Editor\iTweenPathEditor.cs" />
@@ -67,6 +68,7 @@
      <Compile Include="Assets\Plugins\script\iModule.cs" />
      <Compile Include="Assets\Plugins\script\iViewer.cs" />
      <None Include="Assets\Plugins\BlockGame\iTweenEditor\README.txt" />
+     <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Material\ZWriteShader.shader" />
      <None Include="Assets\Plugins\BlockGame\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
      <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Material\GhostShader.shader" />
      <None Include="Assets\Plugins\BlockGame\Resources\Plugins\BlockGame\Prefab\ReadMe.txt" />
