@@ -70,8 +70,10 @@ namespace plugin_BlockGame
 				if ( pfBlock != null )
 				{
 					GameObject goBlock = (GameObject)GameObject.Instantiate(pfBlock);
-					
+
 					goBlock.transform.parent = goPlane.transform;
+					goBlock.transform.localScale = new Vector3(5.0f, 5.0f, 5.0f);
+
 					goBlock.name = "BlockNum" + (i + 1).ToString();
 					goBlock.SetActive(false);
 					

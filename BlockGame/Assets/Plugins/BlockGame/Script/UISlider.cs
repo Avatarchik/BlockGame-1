@@ -13,7 +13,7 @@ namespace plugin_BlockGame
 
 		public void PushObject(GameObject obj)
 		{
-			obj.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
+			obj.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
 			listOfUI.Add(obj);
 		}
 
@@ -22,23 +22,28 @@ namespace plugin_BlockGame
 			startIndex = 0;
 
 			transform.Rotate( 50.0f, 225.0f, 180.0f );
-			transform.localScale = new Vector3(1.05f, 1.05f, 1.05f);
+			transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
 
 			BuildUI();
 		}
 
 		public void BuildUI()
 		{
-			transform.localPosition = new Vector3(5.0f, 12.5f, -8.0f);
+			transform.localPosition = new Vector3(3.5f, 13.5f, -8.0f);
 			// 0 1 2 3 4 5 6 <- input
 			// 6 0 1 2 3 4 5 <- display
-			for ( int i = 0; i < 7; ++i )
+			for ( int i = 0; i < listOfUI.Count; ++i )
 			{
 				int index = (listOfUI.Count + startIndex - 1 + i) % listOfUI.Count;
 				displayListOfUI[i] = listOfUI[index];
 
 				displayListOfUI[i].transform.parent = gameObject.transform;
 				displayListOfUI[i].transform.localPosition = new Vector3(0.0f, 0.0f, (float)(i) * 3.0f);
+
+				foreach( MeshRenderer mr in displayListOfUI[i].GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.enabled = true;
+				}
 			}
 		}
 
@@ -63,7 +68,7 @@ namespace plugin_BlockGame
 
                 startScreenPos = nowScreenPos;
 
-                if (transform.position.y > 17.0f)
+                if (transform.position.y > 17.5f)
                 {
                     ++startIndex;
                     BuildUI();
@@ -77,7 +82,7 @@ namespace plugin_BlockGame
 
                 startScreenPos = nowScreenPos;
 
-                if (transform.position.y < 9.7f)
+                if (transform.position.y < 9.5f)
                 {
                     --startIndex;
                     startIndex = (listOfUI.Count + startIndex) % listOfUI.Count;
@@ -97,17 +102,26 @@ namespace plugin_BlockGame
 			if (Input.GetMouseButtonUp(0))
 			{
 				slideFlag = false;
+
+				foreach( MeshRenderer mr in displayListOfUI[0].GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.enabled = false;
+				}
+				foreach( MeshRenderer mr in displayListOfUI[5].GetComponentsInChildren<MeshRenderer>() )
+				{
+					mr.enabled = false;
+				}
 			}
 
 			if ( !slideFlag )
 			{
-				if ( transform.position.y > 12.7f )
+				if ( transform.position.y > 13.7f )
 				{
 					Vector3 nowPos = transform.position;
 					nowPos.y -= Time.deltaTime * 30.0f;
 					transform.position = nowPos;
 				}
-				else if (transform.position.y < 12.3f )
+				else if (transform.position.y < 13.3f )
 				{
 					Vector3 nowPos = transform.position;
 					nowPos.y += Time.deltaTime * 30.0f;
@@ -115,8 +129,7 @@ namespace plugin_BlockGame
 				}
 				else
 				{
-					transform.localPosition = new Vector3(5.0f, 12.5f, -8.0f);
-
+					transform.localPosition = new Vector3(3.5f, 13.5f, -8.0f);
 				}
 			}
 		}

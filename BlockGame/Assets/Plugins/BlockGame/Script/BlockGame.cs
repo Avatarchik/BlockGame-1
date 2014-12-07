@@ -91,24 +91,24 @@ namespace plugin_BlockGame
             goBlockManager.transform.parent = root.transform;
             goBlockManager.name = "BlockManager";
 
-            GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
-            goCompleteBlock.transform.parent = goPlane.transform;
-			goCompleteBlock.transform.position = new Vector3(-3.75f, 0.1f, 0);
-            goCompleteBlock.transform.eulerAngles = new Vector3(0, 0, 0);
-            goCompleteBlock.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
-            goCompleteBlock.name = "CompleteBlock";
-
             GameObject goCompleteBlockUI = (GameObject)GameObject.Instantiate(pfCompleteBlock);
             goCompleteBlockUI.transform.parent = root.transform;
-			goCompleteBlockUI.transform.position = new Vector3(-4.3f, 3.85f, 8);
-            goCompleteBlockUI.transform.localScale = new Vector3(0.9f, 0.9f, 0.9f);
+			goCompleteBlockUI.transform.position = new Vector3(-2.5f, 1.0f, 9.0f);
+            goCompleteBlockUI.transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
             goCompleteBlockUI.name = "CompleteBlockUI";
+
+			GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
+			goCompleteBlock.transform.parent = goPlane.transform;
+			goCompleteBlock.transform.position = new Vector3(-3.75f, 0.1f, 0);
+			goCompleteBlock.transform.eulerAngles = new Vector3(0, 0, 0);
+			goCompleteBlock.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
+			goCompleteBlock.name = "CompleteBlock";
 
 			GameObject goCompleteBlockDummy = (GameObject)GameObject.Instantiate(pfCompleteBlock);
 			goCompleteBlockDummy.transform.parent = goPlane.transform;
 			goCompleteBlockDummy.transform.position = new Vector3(-3.75f, 0.1f, 0);
 			goCompleteBlockDummy.transform.eulerAngles = new Vector3(0, 0, 0);
-			goCompleteBlock.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+			goCompleteBlockDummy.transform.localScale = new Vector3(1.7f, 1.7f, 1.7f);
 			goCompleteBlockDummy.name = "CompleteBlockDummy";
 
 
