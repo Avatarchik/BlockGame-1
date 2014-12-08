@@ -13,7 +13,7 @@ namespace plugin_BlockGame
 
 		public void PushObject(GameObject obj)
 		{
-			obj.transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+			obj.transform.localScale = new Vector3(4.5f, 3.5f, 3.5f);
 			listOfUI.Add(obj);
 		}
 
@@ -29,7 +29,7 @@ namespace plugin_BlockGame
 
 		public void BuildUI()
 		{
-			transform.localPosition = new Vector3(3.5f, 13.5f, -8.0f);
+			transform.localPosition = new Vector3(4.5f, 13.5f, -8.0f);
 			// 0 1 2 3 4 5 6 <- input
 			// 6 0 1 2 3 4 5 <- display
 			for ( int i = 0; i < listOfUI.Count; ++i )
@@ -129,7 +129,7 @@ namespace plugin_BlockGame
 				}
 				else
 				{
-					transform.localPosition = new Vector3(3.5f, 13.5f, -8.0f);
+					transform.localPosition = new Vector3(4.5f, 13.5f, -8.0f);
 				}
 			}
 		}
