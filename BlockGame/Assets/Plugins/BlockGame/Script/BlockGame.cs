@@ -94,7 +94,7 @@ namespace plugin_BlockGame
             GameObject goCompleteBlockUI = (GameObject)GameObject.Instantiate(pfCompleteBlock);
             goCompleteBlockUI.transform.parent = root.transform;
 			goCompleteBlockUI.transform.position = new Vector3(-2.5f, 1.0f, 9.0f);
-            goCompleteBlockUI.transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
+            goCompleteBlockUI.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             goCompleteBlockUI.name = "CompleteBlockUI";
 
 			GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
