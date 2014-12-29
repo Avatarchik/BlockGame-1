@@ -59,7 +59,12 @@ namespace plugin_BlockGame
             switch (playerState) 
             {
             case PLAYER_STATE.IDLE:
-				UIManager.GetInstance().ChangeState(ControlState.CONTROL_1);
+
+                if (null != UIManager.GetInstance())
+                {
+                    UIManager.GetInstance().ChangeState(ControlState.CONTROL_1);
+                }
+				
                 //if(Input.GetButtonDown("Fire1"))
                 if (Input.GetMouseButton(0))
                 {

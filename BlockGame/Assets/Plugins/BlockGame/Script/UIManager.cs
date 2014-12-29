@@ -13,13 +13,13 @@ namespace plugin_BlockGame
 
 	public class UIManager : MonoBehaviour {
 
-		[SerializeField]
+        const string PrefabPath = "Plugins/BlockGame/Prefab/";
+
 		private GameObject m_StateSprite1 = null;
-		[SerializeField]
 		private GameObject m_StateSprite2 = null;
-		[SerializeField]
 		private GameObject m_StateSprite3 = null;
 
+        private GameObject m_BackGround = null;
 
 		private static UIManager _instance = null;
 		public static UIManager GetInstance()
@@ -32,6 +32,22 @@ namespace plugin_BlockGame
 			if (_instance == null)
 			{
 				_instance = this;
+
+                GameObject pfStateSprite1 = Resources.Load<GameObject>(PrefabPath + "state1");
+                GameObject pfStateSprite2 = Resources.Load<GameObject>(PrefabPath + "state2");
+                GameObject pfStateSprite3 = Resources.Load<GameObject>(PrefabPath + "state3");
+                GameObject pfBackGround = Resources.Load<GameObject>(PrefabPath + "background1");
+
+                m_StateSprite1 = (GameObject)GameObject.Instantiate(pfStateSprite1);
+                m_StateSprite1.transform.parent = gameObject.transform;
+                m_StateSprite2 = (GameObject)GameObject.Instantiate(pfStateSprite2);
+                m_StateSprite2.transform.parent = gameObject.transform;
+                m_StateSprite3 = (GameObject)GameObject.Instantiate(pfStateSprite3);
+                m_StateSprite3.transform.parent = gameObject.transform;
+
+                m_BackGround = (GameObject)GameObject.Instantiate(pfBackGround);
+                m_BackGround.transform.parent = gameObject.transform;
+
 				ChangeState( ControlState.CONTROL_1 );
 			}		
 			else

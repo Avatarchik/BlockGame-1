@@ -52,6 +52,8 @@ namespace plugin_BlockGame
             GameObject pfCompleteBlock = Resources.Load<GameObject>(PrefabPath + "CompleteBlock");
             GameObject pfGhostCompleteBlock = Resources.Load<GameObject>(PrefabPath + "GhostCompleteBlock");
 
+            GameObject pfUIManager = Resources.Load<GameObject>(PrefabPath + "UIManager");
+
 			List<GameObject> goList = new List<GameObject>();
 
 			blockCount = 0;
@@ -67,6 +69,10 @@ namespace plugin_BlockGame
 
 				++blockCount;
 			}
+
+            GameObject goUIManager = (GameObject)GameObject.Instantiate(pfUIManager);
+            goUIManager.transform.parent = root.transform;
+            goUIManager.name = "UIManager";
 
 			GameObject goCamera = (GameObject)GameObject.Instantiate(pfCamera);
             goCamera.transform.parent = root.transform;
