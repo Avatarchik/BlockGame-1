@@ -5,6 +5,7 @@
         _Outline ("Outline width", Range (0, 0.1)) = .005
 		_MainColor ("Main Color", Color) = (0,0,0,1)
         _MainTex ("Texture", 2D) = "white" { }
+        _WaveTime ("WaveTime", float) = 200
     }
  
     SubShader {
@@ -66,6 +67,7 @@
             uniform float4 _MainTex_ST;
             uniform sampler2D _MainTex;
 			uniform float4 _MainColor;
+			uniform float _WaveTime;
 
             struct v2f {
                 float4 pos : POSITION;
@@ -83,9 +85,11 @@
             {
                 half4 c = tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
                 
-                c.r *= ( _MainColor.r * 0.5f + _SinTime.a * 0.1f + 0.4f );
-                c.g *= ( _MainColor.g * 0.5f + _SinTime.a * 0.1f + 0.4f );
-                c.b *= ( _MainColor.b * 0.5f + _SinTime.a * 0.1f + 0.4f );
+                float wave = sin(_Time * _WaveTime / 3) * sin(_Time * _WaveTime) * 0.1f + 0.4f;
+                
+                c.r *= ( _MainColor.r * 0.5f + wave );
+                c.g *= ( _MainColor.g * 0.5f + wave );
+                c.b *= ( _MainColor.b * 0.5f + wave );
                 
                 return c;
             }
