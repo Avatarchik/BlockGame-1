@@ -83,8 +83,10 @@
             {
                 half4 c = tex2D (_MainTex, _MainTex_ST.xy * i.uv.xy + _MainTex_ST.zw);
                 
-                c.r *= ( 0.1f + _SinTime.a * 0.3f );
-                c.b *= ( 0.7f + _SinTime.a * 0.3f );
+                c.r *= ( _MainColor.r * 0.5f + _SinTime.a * 0.1f + 0.4f );
+                c.g *= ( _MainColor.g * 0.5f + _SinTime.a * 0.1f + 0.4f );
+                c.b *= ( _MainColor.b * 0.5f + _SinTime.a * 0.1f + 0.4f );
+                
                 return c;
             }
                    

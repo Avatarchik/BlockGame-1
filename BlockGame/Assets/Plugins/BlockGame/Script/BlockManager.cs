@@ -30,6 +30,7 @@ namespace plugin_BlockGame
 		Material disableMat;
 		Material enableMat;
 		Material assembledMat;
+		Material targetMat;
 
 		List<GameObject> goGhostBlockUIList = new List<GameObject>();
 
@@ -59,8 +60,9 @@ namespace plugin_BlockGame
 			goDummy = GameObject.Find("CompleteBlockDummy");
 
 			disableMat = Resources.Load<Material>(MaterialPath + "Disabled");
-			enableMat = Resources.Load<Material>(MaterialPath + "GhostMaterial");
+			targetMat = Resources.Load<Material>(MaterialPath + "GhostMaterial");
 			assembledMat = Resources.Load<Material>(MaterialPath + "Assembed");
+			enableMat = Resources.Load<Material>(MaterialPath + "Enabled");
 			
 			for ( int i = 0; i < BlockGame.BlockCount; ++i )
 			{
@@ -94,7 +96,7 @@ namespace plugin_BlockGame
 
 				foreach( MeshRenderer mr in goGhostBlockUI.GetComponentsInChildren<MeshRenderer>() )
 				{
-					mr.material = disableMat;
+					mr.material = enableMat;
 				}
 
 				// 다음 스텝 지시
@@ -122,7 +124,7 @@ namespace plugin_BlockGame
 			// Preview도 첫 번째 블록을 강조
 			foreach( MeshRenderer mr in goGhostBlockUIList[0].GetComponentsInChildren<MeshRenderer>() )
 			{
-				mr.material = enableMat;
+				mr.material = targetMat;
 			}
 		}
 		
@@ -182,7 +184,7 @@ namespace plugin_BlockGame
 					{
 						foreach( MeshRenderer mr in goGhostBlockUIList[i + 1].GetComponentsInChildren<MeshRenderer>() )
 						{
-							mr.material = enableMat;
+							mr.material = targetMat;
 						}
 					}
 
