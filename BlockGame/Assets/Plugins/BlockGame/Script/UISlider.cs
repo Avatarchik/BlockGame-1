@@ -7,13 +7,14 @@ namespace plugin_BlockGame
 	public class UISlider : MonoBehaviour
 	{
 		List<GameObject> listOfUI = new List<GameObject>();
-		GameObject[] displayListOfUI = new GameObject[7];
+        GameObject[] displayListOfUI = new GameObject[9];
 
 		int startIndex = 0;
 
 		public void PushObject(GameObject obj)
 		{
-			obj.transform.localScale = new Vector3(4.5f, 3.5f, 3.5f);
+			// 실제 UI 퍼즐 사이즈
+            obj.transform.localScale = new Vector3(1.62f, 1.62f, 1.62f);
 			listOfUI.Add(obj);
 		}
 

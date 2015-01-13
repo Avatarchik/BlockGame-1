@@ -125,6 +125,8 @@ namespace plugin_BlockGame
 
 			UISlider slider = goSliderUI.transform.GetComponent<UISlider>();
 
+            // Debug.Log("UI Loading : " + goList.Count.ToString());
+
 			for ( int i = 0; i < goList.Count; ++i )
 			{
 				GameObject goBlockUI = (GameObject)GameObject.Instantiate(goList[i]);
