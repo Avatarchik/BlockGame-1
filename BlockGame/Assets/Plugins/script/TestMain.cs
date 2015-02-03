@@ -8,36 +8,39 @@ public class TestMain : MonoBehaviour {
 
 	public static iViewer sViewer = null;
     public static BlockGame sModule = null;
-	//public static iModule sModule = null;
+	// public static iModule sModule = null;
 
 	public GameObject mExternRoot;
 
 	private bool bPlayModule = false;
 
+	void Update()
+	{
+		if ( sModule == null )
+		{
+			return;
+		}
 
-	// Use this for initialization
-	void Start () {
+		if ( sModule.IsPlaying == false )
+		{
+			bPlayModule = false;
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-	}
-
-	void OnGUI() {
-
+	void OnGUI()
+	{
 		int w = Screen.width;
 		int h = Screen.height;
 
-		if (!bPlayModule)
+		if ( !bPlayModule )
 		{
-			if (GUI.Button(new Rect(0,0,w/4,w/16), "Execute"))
+			if ( GUI.Button( new Rect( 0 , 0 , w / 4 , w / 16 ) , "Execute" ) )
 			{
 				ExecuteExternalModule();
 			}
 		}
 
-		if (bPlayModule)
+		if ( bPlayModule )
 		{
 			/*
 			if (GUI.Button(new Rect(3*w/4,0,w/4,w/16), "Return"))
@@ -50,6 +53,11 @@ public class TestMain : MonoBehaviour {
 
 	void ExecuteExternalModule()
 	{
+		if ( sModule != null )
+		{
+			ReturnToViewer();
+		}
+
 		bPlayModule = true;
 
 		sViewer = new iViewer();
@@ -62,8 +70,8 @@ public class TestMain : MonoBehaviour {
 	{
 		bPlayModule = false;
 
-        sModule.UnInit();
-
+		sModule.UnInit();
+		
         /*
 		if (mExternRoot != null)
 		{

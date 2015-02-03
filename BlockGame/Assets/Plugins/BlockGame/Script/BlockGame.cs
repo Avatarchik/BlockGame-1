@@ -23,10 +23,41 @@ namespace plugin_BlockGame
 			}
 		}
 
+		bool isPlaying = false;
+		public bool IsPlaying
+		{
+			get
+			{
+				return isPlaying;
+			}
+			set
+			{
+				isPlaying = value;
+			}
+		}
+
+		static BlockGame _instance = null;
+
+		public static BlockGame Instance()
+		{
+			return _instance;
+		}
+
         const string PrefabPath = "Plugins/BlockGame/Prefab/";
 
         public virtual void Init(iViewer viewer)
         {
+			if ( _instance == null )
+			{
+				_instance = this;
+			}
+			else
+			{
+				UnInit();
+			}	
+
+			isPlaying = true;
+
             goPlugin = GameObject.Find("plugin");
             if (goPlugin == null)
             {
@@ -140,8 +171,14 @@ namespace plugin_BlockGame
 
         public virtual void UnInit()
         {
-            GameObject.DestroyImmediate(root);
-            
+			isPlaying = false;
+			GameObject.DestroyImmediate( root );
+
+			if ( _instance != null )
+			{
+				_instance = null;
+			}
+
             /*
             if (root != null)
             {
