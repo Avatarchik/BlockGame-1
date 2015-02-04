@@ -51,7 +51,7 @@ namespace plugin_BlockGame
 			scPlane = goPlane.GetComponent<Plane>();
 			scUISlider = goUISlider.GetComponent<UISlider>();
 
-			screenTouchDividePosition = Screen.height / 5;
+			screenTouchDividePosition = Screen.height / 4.0f;
 		}
 
 		void Update()

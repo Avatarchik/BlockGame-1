@@ -65,12 +65,12 @@ namespace plugin_BlockGame
 			if ( nowScreenPos.x > startScreenPos.x )
 			{
 				Vector3 nowPos = transform.localPosition;
-				nowPos.x += Time.deltaTime * 10.0f;
+				nowPos.x += Time.deltaTime * 13.0f;
 				transform.localPosition = nowPos;
 
 				startScreenPos = nowScreenPos;
 
-				if ( transform.localPosition.x > -4.5f )
+				if ( transform.localPosition.x > -4.4f )
 				{
 					--startIndex;
 					startIndex = ( listOfUI.Count + startIndex ) % listOfUI.Count;
@@ -81,12 +81,12 @@ namespace plugin_BlockGame
 			else if ( nowScreenPos.x < startScreenPos.x )
 			{
 				Vector3 nowPos = transform.localPosition;
-				nowPos.x -= Time.deltaTime * 10.0f;
+				nowPos.x -= Time.deltaTime * 13.0f;
 				transform.localPosition = nowPos;
 
 				startScreenPos = nowScreenPos;
 
-				if ( transform.localPosition.x < -10.5f )
+				if ( transform.localPosition.x < -10.6f )
 				{
 					++startIndex;
 					
