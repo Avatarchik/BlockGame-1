@@ -4,10 +4,11 @@ using System.Collections;
 using civ;
 using plugin_BlockGame;
 
-public class TestMain : MonoBehaviour {
+public class TestMain : MonoBehaviour
+{
 
 	public static iViewer sViewer = null;
-    public static BlockGame sModule = null;
+	public static BlockGame sModule = null;
 	// public static iModule sModule = null;
 
 	public GameObject mExternRoot;
@@ -62,8 +63,8 @@ public class TestMain : MonoBehaviour {
 
 		sViewer = new iViewer();
 		//sModule = new iModule();
-        sModule = new BlockGame();
-		sViewer.PlayModule(sModule);
+		sModule = new BlockGame();
+		sViewer.PlayModule( sModule );
 	}
 
 	void ReturnToViewer()
@@ -71,8 +72,8 @@ public class TestMain : MonoBehaviour {
 		bPlayModule = false;
 
 		sModule.UnInit();
-		
-        /*
+
+		/*
 		if (mExternRoot != null)
 		{
 			for (int i = mExternRoot.transform.childCount-1; i >= 0; i--)
@@ -82,7 +83,6 @@ public class TestMain : MonoBehaviour {
 				DestroyImmediate(t.gameObject);
 			}
 		}
-        */
+		*/
 	}
-
 }

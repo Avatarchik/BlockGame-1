@@ -3,12 +3,13 @@ using System.Collections;
 
 namespace civ
 {
-	public class iModule {
+	public class iModule
+	{
 
 		public virtual void Init(iViewer viewer)
 		{
 			// 컨텐츠 초기화, 실행
-            /*
+			/*
 			GameObject root = GameObject.Find("external_module");
 
 			GameObject pf1 = Resources.Load<GameObject>("prefab/Cube");
@@ -21,8 +22,8 @@ namespace civ
 			go2.transform.parent = root.transform;
 			GameObject go3 = (GameObject)GameObject.Instantiate(pf3);
 			go3.transform.parent = root.transform;
-            */
-			
+			*/
+
 		}
 		public virtual void UnInit()
 		{

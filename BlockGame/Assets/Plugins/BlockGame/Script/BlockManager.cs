@@ -76,7 +76,7 @@ namespace plugin_BlockGame
 					goBlock.transform.parent = goPlane.transform;
 
                     // 픽업 된 퍼즐의 사이즈
-                    goBlock.transform.localScale = new Vector3(1.82f, 1.82f, 1.82f);
+                    goBlock.transform.localScale = new Vector3(1.4f, 1.4f, 1.4f);
 
 					goBlock.name = "BlockNum" + (i + 1).ToString();
 					goBlock.SetActive(false);
