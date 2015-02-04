@@ -119,9 +119,12 @@ namespace plugin_BlockGame
 
             GameObject goPlane = (GameObject)GameObject.Instantiate(pfPlane);
             goPlane.transform.parent = root.transform;
-			goPlane.transform.position = new Vector3(-3.75f, 0, 0);
-            goPlane.transform.eulerAngles = new Vector3(0, 0, 0);
-            goPlane.transform.localScale = new Vector3(1, 1, 1);
+			//goPlane.transform.position = new Vector3(-3.75f, 0, 0);
+            //goPlane.transform.eulerAngles = new Vector3(0, 0, 0);
+            //goPlane.transform.localScale = new Vector3(1, 1, 1);
+			goPlane.transform.position = new Vector3(0.0f, 0, 0);
+			goPlane.transform.eulerAngles = new Vector3(0, 0, 0);
+			goPlane.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             goPlane.name = "Plane";
 
             GameObject goBlockManager = (GameObject)GameObject.Instantiate(pfBlockManager);
@@ -130,8 +133,10 @@ namespace plugin_BlockGame
 
             GameObject goCompleteBlockUI = (GameObject)GameObject.Instantiate(pfCompleteBlock);
             goCompleteBlockUI.transform.parent = root.transform;
-			goCompleteBlockUI.transform.position = new Vector3(-2.5f, 1.0f, 9.0f);
-            goCompleteBlockUI.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+			//goCompleteBlockUI.transform.position = new Vector3(-2.5f, 1.0f, 9.0f);
+            //goCompleteBlockUI.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+			goCompleteBlockUI.transform.position = new Vector3(3.2f, -0.48f, 9.0f);
+			goCompleteBlockUI.transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             goCompleteBlockUI.name = "CompleteBlockUI";
 
 			GameObject goCompleteBlock = (GameObject)GameObject.Instantiate(pfGhostCompleteBlock);
