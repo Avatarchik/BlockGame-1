@@ -56,6 +56,8 @@ namespace plugin_BlockGame
 				UnInit();
 			}
 
+			Screen.orientation = ScreenOrientation.Portrait;
+
 			isPlaying = true;
 
 			goPlugin = GameObject.Find( "plugin" );

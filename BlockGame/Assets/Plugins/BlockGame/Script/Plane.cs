@@ -5,7 +5,7 @@ namespace plugin_BlockGame
 {
 	public class Plane : MonoBehaviour
 	{
-		public float sensitivity = 500;
+		public float sensitivity = 100;
 		float planeRotationY;
 		float planeDeltaY;
 
