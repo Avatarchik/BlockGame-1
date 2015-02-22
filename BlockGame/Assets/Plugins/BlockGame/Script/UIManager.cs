@@ -22,6 +22,8 @@ namespace plugin_BlockGame
 
 		private GameObject m_BackGround = null;
 		private GameObject m_CloseButton = null;
+		private GameObject m_PlusButton = null;
+		private GameObject m_MinusButton = null;
 
 		private static UIManager _instance = null;
 		public static UIManager GetInstance()
@@ -40,6 +42,8 @@ namespace plugin_BlockGame
 				GameObject pfStateSprite3 = Resources.Load<GameObject>( PrefabPath + "state3" );
 				GameObject pfBackGround = Resources.Load<GameObject>( PrefabPath + "background1" );
 				GameObject pfClosebutton = Resources.Load<GameObject>( PrefabPath + "CloseButton" );
+				GameObject pfPlusButton = Resources.Load<GameObject>( PrefabPath + "PlusButton" );
+				GameObject pfMinusButton = Resources.Load<GameObject>( PrefabPath + "MinusButton" );
 
 				m_StateSprite1 = (GameObject)GameObject.Instantiate( pfStateSprite1 );
 				m_StateSprite1.transform.parent = gameObject.transform;
@@ -53,6 +57,12 @@ namespace plugin_BlockGame
 
 				m_CloseButton = (GameObject)GameObject.Instantiate( pfClosebutton );
 				m_CloseButton.transform.parent = gameObject.transform;
+
+				m_PlusButton = (GameObject)GameObject.Instantiate( pfPlusButton );
+				m_PlusButton.transform.parent = gameObject.transform;
+
+				m_MinusButton = (GameObject)GameObject.Instantiate( pfMinusButton );
+				m_MinusButton.transform.parent = gameObject.transform;
 
 				ChangeState( ControlState.CONTROL_1 );
 			}

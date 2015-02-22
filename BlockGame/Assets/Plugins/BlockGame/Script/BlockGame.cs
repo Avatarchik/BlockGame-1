@@ -45,6 +45,49 @@ namespace plugin_BlockGame
 
 		const string PrefabPath = "Plugins/BlockGame/Prefab/";
 
+		float m_BlockRatio = 1.0f;
+		public float BlockRatio
+		{
+			get
+			{
+				return m_BlockRatio;
+			}
+		}
+
+		float m_PrevScalingTime = 0.0f;
+
+		public void Expansion()
+		{
+			if ( Time.time - m_PrevScalingTime > 0.5f && m_BlockRatio < 1.2f )
+			{
+				m_PrevScalingTime = Time.time;
+				m_BlockRatio += 0.1f;
+
+				Debug.Log( "Expand!!!" );
+			}
+
+			if ( m_BlockRatio > 0.9f && m_BlockRatio < 1.1f )
+			{
+				m_BlockRatio = 1.0f;
+			}
+		}
+
+		public void Reduction()
+		{
+			if ( Time.time - m_PrevScalingTime > 0.5f && m_BlockRatio > 0.8f )
+			{
+				m_PrevScalingTime = Time.time;
+				m_BlockRatio -= 0.1f;
+
+				Debug.Log( "Reduce!!!" );
+			}
+
+			if ( m_BlockRatio > 0.9f && m_BlockRatio < 1.1f )
+			{
+				m_BlockRatio = 1.0f;
+			}
+		}
+
 		public virtual void Init(iViewer viewer)
 		{
 			if ( _instance == null )
@@ -83,8 +126,8 @@ namespace plugin_BlockGame
 			GameObject pfPlane = Resources.Load<GameObject>( PrefabPath + "Plane" );
 			GameObject pfBlockManager = Resources.Load<GameObject>( PrefabPath + "BlockManager" );
 			GameObject pfCompleteBlock = Resources.Load<GameObject>( PrefabPath + "CompleteBlock" );
-			GameObject pfGhostCompleteBlock = Resources.Load<GameObject>( PrefabPath + "GhostCompleteBlock" );
 
+			GameObject pfGhostCompleteBlock = Resources.Load<GameObject>( PrefabPath + "GhostCompleteBlock" );
 			GameObject pfUIManager = Resources.Load<GameObject>( PrefabPath + "UIManager" );
 
 			List<GameObject> goList = new List<GameObject>();
@@ -136,6 +179,7 @@ namespace plugin_BlockGame
 			goCompleteBlockUI.transform.localScale = new Vector3( 1.0f , 1.0f , 1.0f );
 			goCompleteBlockUI.name = "CompleteBlockUI";
 
+			// 다음 조립할 타겟
 			GameObject goCompleteBlock = (GameObject)GameObject.Instantiate( pfGhostCompleteBlock );
 			goCompleteBlock.transform.parent = goPlane.transform;
 			goCompleteBlock.transform.position = new Vector3( 0.0f , 0.1f , 0.0f );
@@ -143,6 +187,9 @@ namespace plugin_BlockGame
 			goCompleteBlock.transform.localScale = new Vector3( 1.4f , 1.4f , 1.4f );
 			goCompleteBlock.name = "CompleteBlock";
 
+			goCompleteBlock.AddComponent("BlockRatio");
+
+			// 조립 되어서 가운데 보이는 녀석
 			GameObject goCompleteBlockDummy = (GameObject)GameObject.Instantiate( pfCompleteBlock );
 			goCompleteBlockDummy.transform.parent = goPlane.transform;
 			goCompleteBlockDummy.transform.position = new Vector3( 0.0f , 0.1f , 0.0f );
@@ -150,6 +197,7 @@ namespace plugin_BlockGame
 			goCompleteBlockDummy.transform.localScale = new Vector3( 1.4f , 1.4f , 1.4f );
 			goCompleteBlockDummy.name = "CompleteBlockDummy";
 
+			goCompleteBlockDummy.AddComponent( "BlockRatio" );
 
 			GameObject goSliderUI = new GameObject();
 			goSliderUI.transform.parent = goCamera.transform;

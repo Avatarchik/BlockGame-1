@@ -57,9 +57,12 @@
     <Compile Include="Assets\Plugins\BlockGame\Pixelplacement\iTween\iTween.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\BlockGame.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\BlockManager.cs" />
+    <Compile Include="Assets\Plugins\BlockGame\Script\BlockRatio.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\CloseButton.cs" />
+    <Compile Include="Assets\Plugins\BlockGame\Script\MinusButton.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\Plane.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\Player.cs" />
+    <Compile Include="Assets\Plugins\BlockGame\Script\PlusButton.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\UIManager.cs" />
     <Compile Include="Assets\Plugins\BlockGame\Script\UISlider.cs" />
     <Compile Include="Assets\Plugins\BlockGame\iTweenEditor\Editor\iTweenEventDataEditor.cs" />
